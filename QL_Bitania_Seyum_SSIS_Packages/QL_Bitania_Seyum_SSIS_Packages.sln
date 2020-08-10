@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "QL_Bitania_Seyum_SSIS_Packages", "QL_Bitania_Seyum_SSIS_Packages.dtproj", "{E110D0E8-66B6-4F25-B750-47F56032E2D3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E110D0E8-66B6-4F25-B750-47F56032E2D3}.Development|Default.ActiveCfg = Development
+		{E110D0E8-66B6-4F25-B750-47F56032E2D3}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {55E749BF-30E0-4F5C-8503-8B5A5A6BAA1F}
+	EndGlobalSection
+EndGlobal
