@@ -1,26 +1,26 @@
 <?xml version="1.0"?>
 <DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:refId="Package"
-  DTS:CreationDate="9/2/2020 9:18:51 PM"
+  DTS:CreationDate="9/19/2020 3:36:30 PM"
   DTS:CreationName="Microsoft.Package"
   DTS:CreatorComputerName="DESKTOP-JAOOFHH"
   DTS:CreatorName="DESKTOP-JAOOFHH\12025"
-  DTS:DTSID="{368B7E5B-DF46-4B9C-910B-25F4D5045F78}"
+  DTS:DTSID="{43A3E09B-3676-4698-B901-113C037893A2}"
   DTS:ExecutableType="Microsoft.Package"
   DTS:LastModifiedProductVersion="15.0.2000.123"
   DTS:LocaleID="1033"
   DTS:ObjectName="Package1"
   DTS:PackageType="5"
   DTS:VersionBuild="1"
-  DTS:VersionGUID="{30E2526B-0FE2-4218-AFEA-F8823BABA61E}">
+  DTS:VersionGUID="{C7B3BC93-9588-40F0-9780-E0C2D555BB27}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
     <DTS:ConnectionManager
-      DTS:refId="Package.ConnectionManagers[Flat File Connection Manager]"
+      DTS:refId="Package.ConnectionManagers[FFCM_FTP]"
       DTS:CreationName="FLATFILE"
-      DTS:DTSID="{A886368B-90A4-49B2-AE63-9F894FBBF9B7}"
-      DTS:ObjectName="Flat File Connection Manager">
+      DTS:DTSID="{243E78FA-504D-40BE-A5A1-63E0FC07A4AF}"
+      DTS:ObjectName="FFCM_FTP">
       <DTS:ObjectData>
         <DTS:ConnectionManager
           DTS:Format="Delimited"
@@ -28,36 +28,18 @@
           DTS:HeaderRowDelimiter="_x000D__x000A_"
           DTS:ColumnNamesInFirstDataRow="True"
           DTS:RowDelimiter=""
-          DTS:TextQualifier="_x003C_none_x003E_"
+          DTS:TextQualifier="_x0022_"
           DTS:CodePage="1252"
-          DTS:ConnectionString="C:\Users\12025\Downloads\MortgageInsuranceCompanyCrossWalk1.csv">
+          DTS:ConnectionString="C:\UnzipLendingPad\LendingPad.json">
           <DTS:FlatFileColumns>
             <DTS:FlatFileColumn
               DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="128"
+              DTS:ColumnDelimiter="_x000A_"
+              DTS:MaximumWidth="50"
               DTS:DataType="129"
               DTS:TextQualified="True"
-              DTS:ObjectName="MortgageInsuranceCompanyID"
-              DTS:DTSID="{B89BBE78-C1C8-484F-968E-269473BE4119}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x002C_"
-              DTS:MaximumWidth="128"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="MortgageInsuranceCompany"
-              DTS:DTSID="{50CAB8C1-CDF0-4902-AE6C-950441F77574}"
-              DTS:CreationName="" />
-            <DTS:FlatFileColumn
-              DTS:ColumnType="Delimited"
-              DTS:ColumnDelimiter="_x000D__x000A_"
-              DTS:MaximumWidth="128"
-              DTS:DataType="129"
-              DTS:TextQualified="True"
-              DTS:ObjectName="Insurance_Company"
-              DTS:DTSID="{628B3FCE-3CFA-43D7-8648-D096F0827595}"
+              DTS:ObjectName="Column 0"
+              DTS:DTSID="{943386AB-E30E-443D-9129-9D98C37B9588}"
               DTS:CreationName="" />
           </DTS:FlatFileColumns>
         </DTS:ConnectionManager>
@@ -70,7 +52,7 @@
       DTS:refId="Package\Data Flow Task"
       DTS:CreationName="Microsoft.Pipeline"
       DTS:Description="Data Flow Task"
-      DTS:DTSID="{D395AB4E-3E1F-4EFA-999E-99872392B356}"
+      DTS:DTSID="{80DEABA4-0650-4805-AE04-4C5B5757B477}"
       DTS:ExecutableType="Microsoft.Pipeline"
       DTS:LocaleID="-1"
       DTS:ObjectName="Data Flow Task"
@@ -102,8 +84,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\Flat File Source.Connections[FlatFileConnection]"
-                  connectionManagerID="Package.ConnectionManagers[Flat File Connection Manager]"
-                  connectionManagerRefId="Package.ConnectionManagers[Flat File Connection Manager]"
+                  connectionManagerID="Package.ConnectionManagers[FFCM_FTP]"
+                  connectionManagerRefId="Package.ConnectionManagers[FFCM_FTP]"
                   name="FlatFileConnection" />
               </connections>
               <outputs>
@@ -112,59 +94,15 @@
                   name="Flat File Source Output">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[MortgageInsuranceCompanyID]"
+                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[Column 0]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Conversion"
                       errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[MortgageInsuranceCompanyID]"
-                      length="128"
-                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[MortgageInsuranceCompanyID]"
-                      name="MortgageInsuranceCompanyID"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the data is in binary format."
-                          name="UseBinaryFormat">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[MortgageInsuranceCompany]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[MortgageInsuranceCompany]"
-                      length="128"
-                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[MortgageInsuranceCompany]"
-                      name="MortgageInsuranceCompany"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
-                          name="FastParse">false</property>
-                        <property
-                          dataType="System.Boolean"
-                          description="Indicates whether the data is in binary format."
-                          name="UseBinaryFormat">false</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[Insurance_Company]"
-                      codePage="1252"
-                      dataType="str"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Insurance_Company]"
-                      length="128"
-                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[Insurance_Company]"
-                      name="Insurance_Company"
+                      externalMetadataColumnId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 0]"
+                      length="50"
+                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[Column 0]"
+                      name="Column 0"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -181,23 +119,11 @@
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[MortgageInsuranceCompanyID]"
+                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Column 0]"
                       codePage="1252"
                       dataType="str"
-                      length="128"
-                      name="MortgageInsuranceCompanyID" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[MortgageInsuranceCompany]"
-                      codePage="1252"
-                      dataType="str"
-                      length="128"
-                      name="MortgageInsuranceCompany" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].ExternalColumns[Insurance_Company]"
-                      codePage="1252"
-                      dataType="str"
-                      length="128"
-                      name="Insurance_Company" />
+                      length="50"
+                      name="Column 0" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -245,7 +171,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">[MortgageInsuranceCompany]</property>
+                  name="OpenRowset">[OLE DB Destination]</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -302,50 +228,22 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MortgageInsuranceCompanyID]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column 0]"
                       cachedCodepage="1252"
                       cachedDataType="str"
-                      cachedLength="128"
-                      cachedName="MortgageInsuranceCompanyID"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MortgageInsuranceCompanyID]"
-                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[MortgageInsuranceCompanyID]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[MortgageInsuranceCompany]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="128"
-                      cachedName="MortgageInsuranceCompany"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MortgageInsuranceCompany]"
-                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[MortgageInsuranceCompany]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Insurance_Company]"
-                      cachedCodepage="1252"
-                      cachedDataType="str"
-                      cachedLength="128"
-                      cachedName="Insurance_Company"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Insurance_Company]"
-                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[Insurance_Company]" />
+                      cachedLength="50"
+                      cachedName="Column 0"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 0]"
+                      lineageId="Package\Data Flow Task\Flat File Source.Outputs[Flat File Source Output].Columns[Column 0]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
                     <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MortgageInsuranceCompanyID]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column 0]"
                       codePage="1252"
                       dataType="str"
-                      length="128"
-                      name="MortgageInsuranceCompanyID" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[MortgageInsuranceCompany]"
-                      codePage="1252"
-                      dataType="str"
-                      length="128"
-                      name="MortgageInsuranceCompany" />
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Insurance_Company]"
-                      codePage="1252"
-                      dataType="str"
-                      length="128"
-                      name="Insurance_Company" />
+                      length="50"
+                      name="Column 0" />
                   </externalMetadataColumns>
                 </input>
               </inputs>
@@ -401,7 +299,7 @@
         <NodeLayout
           Size="150.4,41.6"
           Id="Package\Data Flow Task"
-          TopLeft="75.0000012772424,68.058824483911" />
+          TopLeft="85.7142871739913,74.9411775216099" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -413,37 +311,37 @@
         <NodeLayout
           Size="150.4,41.6"
           Id="Package\Data Flow Task\Flat File Source"
-          TopLeft="190.000003235681,16.8235296477084" />
+          TopLeft="99.28571597654,103.235295565483" />
         <NodeLayout
           Size="170.4,41.6"
           Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="226.428575284627,149.117649150142" />
+          TopLeft="178.571431612482,269.176474363334" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Flat File Source Output]"
-          TopLeft="265.200003235681,58.4235296477083">
+          TopLeft="174.48571597654,144.835295565483">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="46.4285720489464,90.6941195024339"
+              EndConnector="89.2857156359419,124.341178797851"
               Start="0,0"
-              End="46.4285720489464,83.1941195024339">
+              End="89.2857156359419,116.841178797851">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,41.347059751217" />
+                    End="0,58.1705893989253" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,41.347059751217"
-                    Point2="0,45.347059751217"
-                    Point3="4,45.347059751217" />
+                    Point1="0,58.1705893989253"
+                    Point2="0,62.1705893989253"
+                    Point3="4,62.1705893989253" />
                   <mssgle:LineSegment
-                    End="42.4285720489464,45.347059751217" />
+                    End="85.2857156359419,62.1705893989253" />
                   <mssgle:CubicBezierSegment
-                    Point1="42.4285720489464,45.347059751217"
-                    Point2="46.4285720489464,45.347059751217"
-                    Point3="46.4285720489464,49.347059751217" />
+                    Point1="85.2857156359419,62.1705893989253"
+                    Point2="89.2857156359419,62.1705893989253"
+                    Point3="89.2857156359419,66.1705893989253" />
                   <mssgle:LineSegment
-                    End="46.4285720489464,83.1941195024339" />
+                    End="89.2857156359419,116.841178797851" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
