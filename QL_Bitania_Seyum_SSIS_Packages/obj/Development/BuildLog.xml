@@ -2,7 +2,7 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>QL_Bitania_Seyum_SSIS_Packages</Name>
-    <LastWriteTime>2020-09-21T18:44:33.5592203Z</LastWriteTime>
+    <LastWriteTime>2020-09-22T03:01:08.4227596Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
@@ -18,7 +18,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Bitania_Seyum_UberWriter.dtsx</Name>
-      <LastWriteTime>2020-09-18T01:21:00.4561367Z</LastWriteTime>
+      <LastWriteTime>2020-09-22T01:55:54.8852663Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -28,7 +28,7 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Bitania_Seyum_SimpleNexus.dtsx</Name>
-      <LastWriteTime>2020-09-22T01:38:32.8513835Z</LastWriteTime>
+      <LastWriteTime>2020-09-22T03:01:08.343751Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
