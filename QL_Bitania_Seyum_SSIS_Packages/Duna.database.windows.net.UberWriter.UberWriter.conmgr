@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0"?>
 <DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
   DTS:ObjectName="Duna.database.windows.net.UberWriter.UberWriter"
-  DTS:DTSID="{0F65369C-88BA-458E-A787-5FC44E5DB009}"
+  DTS:DTSID="{D9E54D7E-1DA2-44B9-B810-4D7CE76959EE}"
   DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=Duna.database.windows.net;User ID=UberWriter;Initial Catalog=UberWriter;Persist Security Info=True;Application Name=SSIS-QL_Bitania_Seyum_SSIS_Packages-{0F65369C-88BA-458E-A787-5FC44E5DB009}Duna.database.windows.net.UberWriter.UberWriter;">
+      DTS:ConnectionString="Data Source=Duna.database.windows.net;User ID=UberWriter;Initial Catalog=UberWriter;Application Name=SSIS-QL_Bitania_Seyum_SSIS_Packages-{D9E54D7E-1DA2-44B9-B810-4D7CE76959EE}Duna.database.windows.net.UberWriter.UberWriter;">
       <DTS:Password
         DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgKB4Kt65GEOMpCZmTecFdAAAAAACAAAAAAAQZgAAAAEAACAAAAD5hto0vFbxFBHRo64UpMba42MAQGienDRiUYgUzsUudgAAAAAOgAAAAAIAACAAAAAg67Na3HLfBB96PcYcRBZbh54Oufj84h7H/q8PENbOP4AAAABOUQxeLQWF/kR0g9Cnqae1yKvZeFARvLFRlhU8/12Hzi2Umu+rPzc4JnKujInM1wKp2pIehTlxu8iNKUgump4fSmp1pB93yWdSsQuY1uwHQ6X5q0vPc92u/x69P+7sdlpVAKTwrfqzEpzyeYMgXODIQAQ0lZFjM+EqA87p/YHCGEAAAACL/j/2i1NibnrWnjVFdjD82pGAjaBppNKlup+xXJeFP7qGIi3z/WIf8QgVh3/cfdJJ1FN0Pjv+WaRKsJ/MHh8G</DTS:Password>
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgKB4Kt65GEOMpCZmTecFdAAAAAACAAAAAAAQZgAAAAEAACAAAAATH3QyIN6C030CfqvQ3tOY/GUAvXryTTo/QJASZ19niQAAAAAOgAAAAAIAACAAAADM+tvzWUKyRvrYASPQqnXOEUDI7Q2mF6KnvvwX5JUBFoAAAAB82E2voqs56/ntTi4O9MZxHgBIYNImwHxNFh7Fo6HXjvV4CKjGs0e3DpMTSjMbTelyUl6Cu/q+4SLu9HLHli/zxaT9WvUb9oYZbVZlgKqOvd9ephAIic4kUyVDBN2XB0k8uCtkqLPU7D9/DIZNS5cOdlUEYoKkYH1mpKpWW6IQukAAAAD4vqQKEM7F4pf/KE09NaeSHvBEVxq9+evEsHidcFRvpnSEGVdiUUYSB60TDtRqbSWc7BaJu5mw9cWHs6LgBa88</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>
