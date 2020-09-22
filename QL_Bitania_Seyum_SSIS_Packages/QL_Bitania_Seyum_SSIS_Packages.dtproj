@@ -26,7 +26,7 @@
           <SSIS:Property SSIS:Name="CreatorComputerName">DESKTOP-JAOOFHH</SSIS:Property>
           <SSIS:Property SSIS:Name="Description">
           </SSIS:Property>
-          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgKB4Kt65GEOMpCZmTecFdAAAAAACAAAAAAAQZgAAAAEAACAAAACcr4Zl65spJvIYDmPNEcDJ8xkPw9rNMDzgQU5cPfweHQAAAAAOgAAAAAIAACAAAAAQGdFeLnvritzfEUXzrwcJAsKMRE882WbGNsDRLTNIWJAAAAA8915Ui+sLh9tVWuojS5gEoCYQe/6CVeE8lSWPfZhCrh45LakqguMm+ZyA20D3st2w27tyfLU+80ctOkL6vydGDhIbYnE5yWP0T7mzejqD6l2q06XaX2xpOj5DwVrJIRf0RLeXTU3Iwoj6fKlNN4ooxUwyXCcNuUwQr5ySqzaLaWwDhpm0A+HsuaBnCK1pA35AAAAATXVcuelKJRYo7ubVisuFuKezubUHpukOMPWDz4gbdLfmlezG/196vYoQ8rO9eJTLW6JtULPOjGH8IunMFCIHYQ==</SSIS:Property>
+          <SSIS:Property SSIS:Name="PasswordVerifier" SSIS:Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgKB4Kt65GEOMpCZmTecFdAAAAAACAAAAAAAQZgAAAAEAACAAAAB5s+07olCbfQm1V6ERDLR+Q9GN/TtDM/aqxl4IXDYkvQAAAAAOgAAAAAIAACAAAACnQmQcjK9tr/LpKvp7qHTYHSMh0YNokqjclb+MVXcULJAAAADImxjb8XEOMWZyV93OfrsxCludXbjUy+3oyHkspwb2WJXsW3AVR760CeH4bhA6oGUNQzTD8aVa3u6IFVMlcFIeMTuOfN2H6m4wp2hFF9fevuebHP9r8bEoj8c1mZaG/IVtSJRRYWxFUaC/ghuxYnQH9pUSV8BlgY/Hj6CxktwkuJWDLL7BDcn4TBwqcXeBK19AAAAAZd7ShYg/eOrAbNG7bG2jrkgMDbqdPtslVbFlt9oq3NcrOkfOSU4iuzbTyhuBo/tEb5pYoFeBDxfFNY6oY8ckzw==</SSIS:Property>
           <SSIS:Property SSIS:Name="FormatVersion">1</SSIS:Property>
         </SSIS:Properties>
         <SSIS:Packages>
@@ -34,6 +34,7 @@
           <SSIS:Package SSIS:Name="Pkg_Bitania_Seyum_QuickenLoan.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Pkg_Bitania_Seyum_UberWriter.dtsx" SSIS:EntryPoint="1" />
           <SSIS:Package SSIS:Name="Pkg_Bitania_Seyum_LendingPad.dtsx" SSIS:EntryPoint="1" />
+          <SSIS:Package SSIS:Name="Pkg_Bitania_Seyum_SimpleNexus.dtsx" SSIS:EntryPoint="1" />
         </SSIS:Packages>
         <SSIS:ConnectionManagers>
           <SSIS:ConnectionManager SSIS:Name="OData Source.conmgr" />
@@ -713,7 +714,7 @@
                 <SSIS:Property SSIS:Name="IncludeInDebugDump">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Required">0</SSIS:Property>
                 <SSIS:Property SSIS:Name="Sensitive">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="Value">Data Source=Duna.database.windows.net;User ID=UberWriter;Initial Catalog=UberWriter;Application Name=SSIS-QL_Bitania_Seyum_SSIS_Packages-{0F65369C-88BA-458E-A787-5FC44E5DB009}Duna.database.windows.net.UberWriter.UberWriter;</SSIS:Property>
+                <SSIS:Property SSIS:Name="Value">Data Source=Duna.database.windows.net;User ID=UberWriter;Initial Catalog=UberWriter;Persist Security Info=True;Application Name=SSIS-QL_Bitania_Seyum_SSIS_Packages-{0F65369C-88BA-458E-A787-5FC44E5DB009}Duna.database.windows.net.UberWriter.UberWriter;</SSIS:Property>
                 <SSIS:Property SSIS:Name="DataType">18</SSIS:Property>
               </SSIS:Properties>
             </SSIS:Parameter>
@@ -965,10 +966,10 @@
                 <SSIS:Property SSIS:Name="Name">Pkg_Bitania_Seyum_QuickenLoan</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">331</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">332</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{6B9FB524-7F7E-4141-ABF6-A430AA3F5266}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{D4DE3378-8330-4CBF-8ECA-86BFF90209ED}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>
@@ -999,10 +1000,27 @@
                 <SSIS:Property SSIS:Name="Name">Pkg_Bitania_Seyum_LendingPad</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionBuild">352</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">387</SSIS:Property>
                 <SSIS:Property SSIS:Name="VersionComments">
                 </SSIS:Property>
-                <SSIS:Property SSIS:Name="VersionGUID">{4B040E62-F4B2-41C5-A42F-E3937DEB4BB2}</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{618DAB80-58C8-487C-9623-478F33375935}</SSIS:Property>
+                <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
+                <SSIS:Property SSIS:Name="Description">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="ProtectionLevel">1</SSIS:Property>
+              </SSIS:Properties>
+              <SSIS:Parameters />
+            </SSIS:PackageMetaData>
+            <SSIS:PackageMetaData SSIS:Name="Pkg_Bitania_Seyum_SimpleNexus.dtsx">
+              <SSIS:Properties>
+                <SSIS:Property SSIS:Name="ID">{26801D38-9D38-4BA0-9D7C-6B117B94F40C}</SSIS:Property>
+                <SSIS:Property SSIS:Name="Name">Pkg_Bitania_Seyum_SimpleNexus</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMajor">1</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionMinor">0</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionBuild">392</SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionComments">
+                </SSIS:Property>
+                <SSIS:Property SSIS:Name="VersionGUID">{608455FC-4CFA-4F47-892C-767EB7C520C8}</SSIS:Property>
                 <SSIS:Property SSIS:Name="PackageFormatVersion">8</SSIS:Property>
                 <SSIS:Property SSIS:Name="Description">
                 </SSIS:Property>

@@ -2,13 +2,13 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>QL_Bitania_Seyum_SSIS_Packages</Name>
-    <LastWriteTime>2020-09-19T19:56:30.1593458Z</LastWriteTime>
+    <LastWriteTime>2020-09-21T18:44:33.5592203Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Pkg_Bitania_Seyum_LendingQB.dtsx</Name>
-      <LastWriteTime>2020-09-17T17:09:41.5057299Z</LastWriteTime>
+      <LastWriteTime>2020-09-20T19:06:02.2990135Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
@@ -23,7 +23,12 @@
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Bitania_Seyum_LendingPad.dtsx</Name>
-      <LastWriteTime>2020-09-20T01:55:24.3657536Z</LastWriteTime>
+      <LastWriteTime>2020-09-21T20:38:49.7729027Z</LastWriteTime>
+      <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
+    </ProjectBuildItemInfo>
+    <ProjectBuildItemInfo>
+      <Name>Pkg_Bitania_Seyum_SimpleNexus.dtsx</Name>
+      <LastWriteTime>2020-09-22T01:38:32.8513835Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>
