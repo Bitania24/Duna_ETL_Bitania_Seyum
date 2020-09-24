@@ -5,10 +5,10 @@
   DTS:CreationName="ADO.NET:System.Data.SqlClient.SqlConnection, System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
   <DTS:ObjectData>
     <DTS:ConnectionManager
-      DTS:ConnectionString="Data Source=Duna.database.windows.net;User ID=UberWriter;Initial Catalog=UberWriter;Application Name=SSIS-QL_Bitania_Seyum_SSIS_Packages-{D9E54D7E-1DA2-44B9-B810-4D7CE76959EE}Duna.database.windows.net.UberWriter.UberWriter;">
+      DTS:ConnectionString="Data Source=Duna.database.windows.net;User ID=UberWriter;Initial Catalog=UberWriter;Persist Security Info=True;Application Name=SSIS-QL_Bitania_Seyum_SSIS_Packages-{D9E54D7E-1DA2-44B9-B810-4D7CE76959EE}Duna.database.windows.net.UberWriter.UberWriter;">
       <DTS:Password
         DTS:Name="Password"
-        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgKB4Kt65GEOMpCZmTecFdAAAAAACAAAAAAAQZgAAAAEAACAAAACl/cvmTzXetXO0fTc9QMpaCA6oSrJJ37+71N2pGX6zPwAAAAAOgAAAAAIAACAAAADN5bAx6s8fXZnR6dp76986fnX4czVu3VDDXj7A3whgg4AAAAC84Q2txNN6UNWmcvRFBHdcnBQ6Aw4+L+6gGRyv5AcUdk8g9h7nAcTuat49JEr1v8DLBlqLchP2kgCHMVm0x8rtA8J2ag7lZd1wcw0L4cpgB7aJMVxkvSo/kTanKr0xBYLYEgDyS++6nBPTRIpy81NPvYqbQ0r7+GwjGheGdAv0EEAAAAB1zmOlk5vQZ7FdHoCSPm8t77baUN5PnaHiBATmC2Gavrdnw0Om5WylhLatsFTraqkYBEli2HaR7xQiX75mfqLD</DTS:Password>
+        Sensitive="1">AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAgKB4Kt65GEOMpCZmTecFdAAAAAACAAAAAAAQZgAAAAEAACAAAADJB5LQsA+LRzwsNdOUTb4lrgreXmDq4S2E/mEkEK9oagAAAAAOgAAAAAIAACAAAABFZoXhR5hko+BHIOzbi3yu8L5oPUv7sMm8mNFqkJob+4AAAABcviChMhQ0H+opq1SB2Zr8iPOOjGH8n2OUa1r8rFfT9fq3Im3qWqtRi3unjvjCNjNujX4z9LvaRy2G9THqWLSn/SPPOzEoWvGIIxYtYTWgtU3z1M94XQaJDoNHm52Hokpvbnbq9ci/oqyZs8onhtYPsaOCC1OwKY+trfy2WEday0AAAAAsgt+syJr38WJ9YUAcj9zHOTuc6YwuG9cdDoW5vN4Hb8MuES1CKRg3rUJfnSBdi5KKiQW9Dg7oO3cG+n8GcomF</DTS:Password>
     </DTS:ConnectionManager>
   </DTS:ObjectData>
 </DTS:ConnectionManager>

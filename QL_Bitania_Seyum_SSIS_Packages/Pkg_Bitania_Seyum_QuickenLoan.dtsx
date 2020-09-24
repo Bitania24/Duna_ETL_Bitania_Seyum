@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_Bitania_Seyum_QuickenLoan"
   DTS:PackageType="5"
-  DTS:VersionBuild="335"
-  DTS:VersionGUID="{65D01532-30D3-4338-A7AD-1B165712C69D}">
+  DTS:VersionBuild="347"
+  DTS:VersionGUID="{90F18A22-17B1-4891-9FA7-F36E95D9D1C3}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -23,8 +23,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="varBody">
       <DTS:VariableValue
-        DTS:DataType="8"
-        xml:space="preserve"></DTS:VariableValue>
+        DTS:DataType="8">Check ETL Notification below</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -94,7 +93,7 @@ IF EXISTS (   SELECT [SourceName], MAX(LastModifiedDate) AS MaxLastModifiedDate 
       DTS:Namespace="User"
       DTS:ObjectName="varRunTime">
       <DTS:VariableValue
-        DTS:DataType="7">9/21/2020 11:46:06 PM</DTS:VariableValue>
+        DTS:DataType="7">9/24/2020 6:26:46 PM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -143,7 +142,7 @@ IF EXISTS (   SELECT [SourceName], MAX(LastModifiedDate) AS MaxLastModifiedDate 
       DTS:Namespace="User"
       DTS:ObjectName="varTimeStamp">
       <DTS:VariableValue
-        DTS:DataType="7">9/21/2020 11:46:06 PM</DTS:VariableValue>
+        DTS:DataType="7">9/24/2020 6:26:46 PM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -170,95 +169,6 @@ IF EXISTS (   SELECT [SourceName], MAX(LastModifiedDate) AS MaxLastModifiedDate 
         <pipeline
           version="1">
           <components>
-            <component
-              refId="Package\DFT_QuickenLoan_SalesForce\CS_Incremental Load"
-              componentClassID="Microsoft.ConditionalSplit"
-              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
-              name="CS_Incremental Load"
-              usesDispositions="true">
-              <inputs>
-                <input
-                  refId="Package\DFT_QuickenLoan_SalesForce\CS_Incremental Load.Inputs[Conditional Split Input]"
-                  description="Input to the Conditional Split Transformation"
-                  name="Conditional Split Input">
-                  <inputColumns>
-                    <inputColumn
-                      refId="Package\DFT_QuickenLoan_SalesForce\CS_Incremental Load.Inputs[Conditional Split Input].Columns[LastModifiedDate__c]"
-                      cachedDataType="dbTimeStamp"
-                      cachedName="LastModifiedDate__c"
-                      lineageId="Package\DFT_QuickenLoan_SalesForce\Salesforce Source_QuickenLoan.Outputs[Salesforce Source Output].Columns[LastModifiedDate__c]" />
-                  </inputColumns>
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\DFT_QuickenLoan_SalesForce\CS_Incremental Load.Outputs[Ignore]"
-                  description="Output 1 of the Conditional Split Transformation"
-                  errorOrTruncationOperation="Computation"
-                  errorRowDisposition="FailComponent"
-                  exclusionGroup="1"
-                  name="Ignore"
-                  synchronousInputId="Package\DFT_QuickenLoan_SalesForce\CS_Incremental Load.Inputs[Conditional Split Input]"
-                  truncationRowDisposition="FailComponent">
-                  <properties>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
-                      name="Expression">(DT_STR,50,1252)#{Package\DFT_QuickenLoan_SalesForce\Salesforce Source_QuickenLoan.Outputs[Salesforce Source Output].Columns[LastModifiedDate__c]} &lt;= (DT_STR,50,1252)@[User::varLastModifiedDate]</property>
-                    <property
-                      containsID="true"
-                      dataType="System.String"
-                      description="Specifies the friendly version of the expression. This expression version uses column names."
-                      expressionType="Notify"
-                      name="FriendlyExpression">(DT_STR,50,1252)LastModifiedDate__c &lt;= (DT_STR,50,1252)@[User::varLastModifiedDate]</property>
-                    <property
-                      dataType="System.Int32"
-                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
-                      name="EvaluationOrder">0</property>
-                  </properties>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT_QuickenLoan_SalesForce\CS_Incremental Load.Outputs[Keep]"
-                  description="Default Output of the Conditional Split Transformation"
-                  exclusionGroup="1"
-                  name="Keep"
-                  synchronousInputId="Package\DFT_QuickenLoan_SalesForce\CS_Incremental Load.Inputs[Conditional Split Input]">
-                  <properties>
-                    <property
-                      dataType="System.Boolean"
-                      name="IsDefaultOut">true</property>
-                  </properties>
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\DFT_QuickenLoan_SalesForce\CS_Incremental Load.Outputs[Conditional Split Error Output]"
-                  description="Error Output of the Conditional Split Transformation"
-                  exclusionGroup="1"
-                  isErrorOut="true"
-                  name="Conditional Split Error Output"
-                  synchronousInputId="Package\DFT_QuickenLoan_SalesForce\CS_Incremental Load.Inputs[Conditional Split Input]">
-                  <outputColumns>
-                    <outputColumn
-                      refId="Package\DFT_QuickenLoan_SalesForce\CS_Incremental Load.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
-                      dataType="i4"
-                      lineageId="Package\DFT_QuickenLoan_SalesForce\CS_Incremental Load.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
-                      name="ErrorCode"
-                      specialFlags="1" />
-                    <outputColumn
-                      refId="Package\DFT_QuickenLoan_SalesForce\CS_Incremental Load.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
-                      dataType="i4"
-                      lineageId="Package\DFT_QuickenLoan_SalesForce\CS_Incremental Load.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
-                      name="ErrorColumn"
-                      specialFlags="2" />
-                  </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
             <component
               refId="Package\DFT_QuickenLoan_SalesForce\Derived Column 1"
               componentClassID="Microsoft.DerivedColumn"
@@ -12665,7 +12575,7 @@ where [refTable].[MarketSourceCode] = ?</property>
     , UnderwritingReceivedDate__c
   FROM Quicken_Loans__c
   Where (BorrFirstName__c &lt;&gt;'Test' OR BorrLastName__c&lt;&gt;'Test') 
-  
+  And LastModifiedDate__c &gt; @[User::varLastModifiedDate]
   
   </property>
                 <property
@@ -14189,11 +14099,6 @@ where [refTable].[MarketSourceCode] = ?</property>
               name="Fuzzy Lookup Output"
               startId="Package\DFT_QuickenLoan_SalesForce\Fuzzy Lookup_MIC.Outputs[Fuzzy Lookup Output]" />
             <path
-              refId="Package\DFT_QuickenLoan_SalesForce.Paths[Keep]"
-              endId="Package\DFT_QuickenLoan_SalesForce\Derived Column_DT_WSTR_DT_STR.Inputs[Derived Column Input]"
-              name="Keep"
-              startId="Package\DFT_QuickenLoan_SalesForce\CS_Incremental Load.Outputs[Keep]" />
-            <path
               refId="Package\DFT_QuickenLoan_SalesForce.Paths[Lookup Match Output]"
               endId="Package\DFT_QuickenLoan_SalesForce\Fuzzy Lookup_MIC.Inputs[Fuzzy Lookup Input]"
               name="Lookup Match Output"
@@ -14205,30 +14110,11 @@ where [refTable].[MarketSourceCode] = ?</property>
               startId="Package\DFT_QuickenLoan_SalesForce\Row Count.Outputs[Row Count Output 1]" />
             <path
               refId="Package\DFT_QuickenLoan_SalesForce.Paths[Salesforce Source Output]"
-              endId="Package\DFT_QuickenLoan_SalesForce\CS_Incremental Load.Inputs[Conditional Split Input]"
+              endId="Package\DFT_QuickenLoan_SalesForce\Derived Column_DT_WSTR_DT_STR.Inputs[Derived Column Input]"
               name="Salesforce Source Output"
               startId="Package\DFT_QuickenLoan_SalesForce\Salesforce Source_QuickenLoan.Outputs[Salesforce Source Output]" />
           </paths>
         </pipeline>
-      </DTS:ObjectData>
-    </DTS:Executable>
-    <DTS:Executable
-      DTS:refId="Package\EST_DeleteQuickenLoanRecordFromStagingTable"
-      DTS:CreationName="Microsoft.ExecuteSQLTask"
-      DTS:Description="Execute SQL Task"
-      DTS:Disabled="True"
-      DTS:DTSID="{30CC61B2-E89E-4B62-B10E-DC1A16DA79F0}"
-      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
-      DTS:LocaleID="-1"
-      DTS:ObjectName="EST_DeleteQuickenLoanRecordFromStagingTable"
-      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
-      DTS:ThreadHint="1">
-      <DTS:Variables />
-      <DTS:ObjectData>
-        <SQLTask:SqlTaskData
-          SQLTask:Connection="{1E0A672A-E8F7-4A54-9859-53D94BF00627}"
-          SQLTask:SqlStmtSourceType="Variable"
-          SQLTask:SqlStatementSource="User::VarDeleteQuickenLoanTable" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
@@ -14328,7 +14214,7 @@ where [refTable].[MarketSourceCode] = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{379FA5CD-2C95-4B05-B282-76F18BEB384E}"
+      DTS:DTSID="{BA689957-638C-41B4-A91D-8C52D12B083C}"
       DTS:From="Package\EST_Max(LastModifiedDate)"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
@@ -14690,7 +14576,7 @@ namespace ST_216479fcad2e47c1b201f8558e4e201d
             String SendMailTo = Dts.Variables["User::varToEmail"].Value.ToString();
             String SendMailSubject = Dts.Variables["User::varSubjectError"].Value.ToString();
             //string SendMailbody = Dts.Variables["User::varBody"].Value.ToString();
-            String SendMailBody = Dts.Variables["System::PackageName"].Value.ToString() + " " + Dts.Variables["System::ErrorCode"].Value.ToString() + " " + Dts.Variables["System::ErrorDescription"].Value.ToString() + " " + Dts.Variables["System::StartTime"].Value.ToString();
+            String SendMailBody = Dts.Variables["User::varBody"].Value.ToString() + " " + Dts.Variables["System::PackageName"].Value.ToString() + " " + Dts.Variables["System::ErrorCode"].Value.ToString() + " " + Dts.Variables["System::ErrorDescription"].Value.ToString() + " " + Dts.Variables["System::StartTime"].Value.ToString();
             String SmtpClient = Dts.Variables["User::varSmtpClient"].Value.ToString();
             String Password = Dts.Variables["User::varPassword"].Value.ToString();
             String pt = Dts.Variables["User::varSmtpServerPort"].Value.ToString();
@@ -14817,7 +14703,7 @@ namespace ST_216479fcad2e47c1b201f8558e4e201d.Properties {
     <msb:CodeName>ST_216479fcad2e47c1b201f8558e4e201d</msb:CodeName>
     <msb:Language>msBuild</msb:Language>
     <msb:DisplayName>ST_216479fcad2e47c1b201f8558e4e201d</msb:DisplayName>
-    <msb:ProjectId>{BBFCE8B9-2109-465B-806C-98A794ED3224}</msb:ProjectId>
+    <msb:ProjectId>{98558863-7E8F-4888-910F-11F9D48D00DD}</msb:ProjectId>
   </msb:PropertyGroup>
   <msb:ItemGroup>
     <msb:Project Include="ST_216479fcad2e47c1b201f8558e4e201d.csproj" />
@@ -14957,98 +14843,98 @@ using System.Runtime.CompilerServices;
               <BinaryItem
                 Name="ST_216479fcad2e47c1b201f8558e4e201d.dll">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
-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
+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
-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
+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
-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
+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
-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
+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
-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
-AAAAAAAAAAABAAAA9wQAAAUAAgAAAABJbnQzMgA8TW9kdWxlPgBNaWNyb3NvZnQuU3FsU2VydmVy
-Lk1hbmFnZWREVFMAdmFsdWVfXwBtc2NvcmxpYgBTVF8yMTY0NzlmY2FkMmU0N2MxYjIwMWY4NTU4
-ZTRlMjAxZABBZGQAU2VuZABkZWZhdWx0SW5zdGFuY2UATWFpbE1lc3NhZ2UAVmFyaWFibGUAUnVu
-dGltZVR5cGVIYW5kbGUAR2V0VHlwZUZyb21IYW5kbGUATWljcm9zb2Z0LlNxbFNlcnZlci5EdHMu
-UnVudGltZQBUeXBlAEZhaWx1cmUAZ2V0X0N1bHR1cmUAc2V0X0N1bHR1cmUAcmVzb3VyY2VDdWx0
-dXJlAFZTVEFSVFNjcmlwdE9iamVjdE1vZGVsQmFzZQBBcHBsaWNhdGlvblNldHRpbmdzQmFzZQBQ
-YXJzZQBFZGl0b3JCcm93c2FibGVTdGF0ZQBDb21waWxlckdlbmVyYXRlZEF0dHJpYnV0ZQBEZWJ1
-Z2dlck5vblVzZXJDb2RlQXR0cmlidXRlAERlYnVnZ2FibGVBdHRyaWJ1dGUARWRpdG9yQnJvd3Nh
-YmxlQXR0cmlidXRlAEFzc2VtYmx5VGl0bGVBdHRyaWJ1dGUAQXNzZW1ibHlUcmFkZW1hcmtBdHRy
-aWJ1dGUAVGFyZ2V0RnJhbWV3b3JrQXR0cmlidXRlAEFzc2VtYmx5Q29uZmlndXJhdGlvbkF0dHJp
-YnV0ZQBBc3NlbWJseURlc2NyaXB0aW9uQXR0cmlidXRlAENvbXBpbGF0aW9uUmVsYXhhdGlvbnNB
-dHRyaWJ1dGUAQXNzZW1ibHlQcm9kdWN0QXR0cmlidXRlAEFzc2VtYmx5Q29weXJpZ2h0QXR0cmli
-dXRlAFNTSVNTY3JpcHRUYXNrRW50cnlQb2ludEF0dHJpYnV0ZQBBc3NlbWJseUNvbXBhbnlBdHRy
-aWJ1dGUAUnVudGltZUNvbXBhdGliaWxpdHlBdHRyaWJ1dGUAZ2V0X1ZhbHVlAHZhbHVlAFN5c3Rl
-bS5SdW50aW1lLlZlcnNpb25pbmcAVG9TdHJpbmcATWljcm9zb2Z0LlNxbFNlcnZlci5TY3JpcHRU
-YXNrAE1pY3Jvc29mdC5TcWxTZXJ2ZXIuRHRzLlRhc2tzLlNjcmlwdFRhc2sATmV0d29ya0NyZWRl
-bnRpYWwAU2NyaXB0T2JqZWN0TW9kZWwAU3lzdGVtLkNvbXBvbmVudE1vZGVsAFN5c3RlbS5OZXQu
-TWFpbABTVF8yMTY0NzlmY2FkMmU0N2MxYjIwMWY4NTU4ZTRlMjAxZC5kbGwAc2V0X0VuYWJsZVNz
-bABnZXRfSXRlbQBTeXN0ZW0Ac2V0X0Zyb20ARW51bQByZXNvdXJjZU1hbgBTY3JpcHRNYWluAFN5
-c3RlbS5Db25maWd1cmF0aW9uAFN5c3RlbS5HbG9iYWxpemF0aW9uAFN5c3RlbS5SZWZsZWN0aW9u
-AE1haWxBZGRyZXNzQ29sbGVjdGlvbgBFeGNlcHRpb24AZ2V0X1RvAEN1bHR1cmVJbmZvAGdldF9S
-ZXNvdXJjZU1hbmFnZXIALmN0b3IALmNjdG9yAFN5c3RlbS5EaWFnbm9zdGljcwBTeXN0ZW0uUnVu
-dGltZS5Db21waWxlclNlcnZpY2VzAFN5c3RlbS5SZXNvdXJjZXMAU1RfMjE2NDc5ZmNhZDJlNDdj
-MWIyMDFmODU1OGU0ZTIwMWQuUHJvcGVydGllcy5SZXNvdXJjZXMucmVzb3VyY2VzAERlYnVnZ2lu
-Z01vZGVzAFNUXzIxNjQ3OWZjYWQyZTQ3YzFiMjAxZjg1NThlNGUyMDFkLlByb3BlcnRpZXMAZ2V0
-X1ZhcmlhYmxlcwBTZXR0aW5ncwBzZXRfQ3JlZGVudGlhbHMAU3VjY2VzcwBNYWlsQWRkcmVzcwBn
-ZXRfRHRzAFNjcmlwdFJlc3VsdHMAQ29uY2F0AE9iamVjdABzZXRfU3ViamVjdABTeXN0ZW0uTmV0
-AGdldF9EZWZhdWx0AHNldF9UYXNrUmVzdWx0AFNtdHBDbGllbnQAc2V0X1BvcnQASUNyZWRlbnRp
-YWxzQnlIb3N0AHNldF9Cb2R5AGdldF9Bc3NlbWJseQAAAAAlVQBzAGUAcgA6ADoAdgBhAHIARgBy
-AG8AbQBFAG0AYQBpAGwAACFVAHMAZQByADoAOgB2AGEAcgBUAG8ARQBtAGEAaQBsAAArVQBzAGUA
-cgA6ADoAdgBhAHIAUwB1AGIAagBlAGMAdABFAHIAcgBvAHIAACdTAHkAcwB0AGUAbQA6ADoAUABh
-AGMAawBhAGcAZQBOAGEAbQBlAAADIAAAI1MAeQBzAHQAZQBtADoAOgBFAHIAcgBvAHIAQwBvAGQA
-ZQAAMVMAeQBzAHQAZQBtADoAOgBFAHIAcgBvAHIARABlAHMAYwByAGkAcAB0AGkAbwBuAAAjUwB5
-AHMAdABlAG0AOgA6AFMAdABhAHIAdABUAGkAbQBlAAAnVQBzAGUAcgA6ADoAdgBhAHIAUwBtAHQA
-cABDAGwAaQBlAG4AdAAAI1UAcwBlAHIAOgA6AHYAYQByAFAAYQBzAHMAdwBvAHIAZAAAL1UAcwBl
-AHIAOgA6AHYAYQByAFMAbQB0AHAAUwBlAHIAdgBlAHIAUABvAHIAdAAAcVMAVABfADIAMQA2ADQA
-NwA5AGYAYwBhAGQAMgBlADQANwBjADEAYgAyADAAMQBmADgANQA1ADgAZQA0AGUAMgAwADEAZAAu
-AFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAAAAAAaZbCLH6r0E6EQ0bQ
-m2GC3QAEIAEBCAMgAAEFIAEBEREEIAEBDgUgAQERWQsHCA4ODg4ODggSPQQgABJpBCAAEm0FIAES
-cRwDIAAcAyAADgUAAQ4dDgQAAQgOBiABARKAgQUgABKAhQUgAgEODgYgAQESgI0EIAEBAgUgAQES
-PQgAARKAkRGAlQUgABKAmQcgAgEOEoCZCLd6XFYZNOCJCImEXc2AgMyRBAAAAAAEAQAAAAMGElED
-BhJVAwYSEAIGCAMGERQEAAASUQQAABJVBQABARJVBAAAEhADAAABBAgAElEECAASVQQIABIQCAEA
-CAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9uVGhyb3dzAQgBAAIAAAAAACgBACNTVF8yMTY0
-NzlmY2FkMmU0N2MxYjIwMWY4NTU4ZTRlMjAxZAAABQEAAAAAFgEAEUNvcHlyaWdodCBAICAyMDIw
-AABJAQAaLk5FVEZyYW1ld29yayxWZXJzaW9uPXY0LjcBAFQOFEZyYW1ld29ya0Rpc3BsYXlOYW1l
-Ei5ORVQgRnJhbWV3b3JrIDQuNwAAtAAAAM7K774BAAAAkQAAAGxTeXN0ZW0uUmVzb3VyY2VzLlJl
-c291cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBDdWx0dXJlPW5ldXRyYWws
-IFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJlc291cmNlcy5SdW50aW1l
-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
+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
+nQBjAGsAnQAbAAMAAQAEAAMAAACWBM4AAAADAdMAAADyBdgAAgAEAAMAAgAFAAUAAQAGAAUAAgAH
+AAcABIAAAAEAAACUHZCBAAAAAAAAQAAAAAQAAAAAAAAAAAAAAIYANwAAAAAADwAAAAAAAAAAAAAA
+jwAmAwAAAAAEAAAAAAAAAAAAAACGAPcDAAAAAA8AAAAAAAAAAAAAAI8AEAAAAAAAAAAAAAEAAAD3
+BAAABQACAAAAAEludDMyADxNb2R1bGU+AE1pY3Jvc29mdC5TcWxTZXJ2ZXIuTWFuYWdlZERUUwB2
+YWx1ZV9fAG1zY29ybGliAFNUXzIxNjQ3OWZjYWQyZTQ3YzFiMjAxZjg1NThlNGUyMDFkAEFkZABT
+ZW5kAGRlZmF1bHRJbnN0YW5jZQBNYWlsTWVzc2FnZQBWYXJpYWJsZQBSdW50aW1lVHlwZUhhbmRs
+ZQBHZXRUeXBlRnJvbUhhbmRsZQBNaWNyb3NvZnQuU3FsU2VydmVyLkR0cy5SdW50aW1lAFR5cGUA
+RmFpbHVyZQBnZXRfQ3VsdHVyZQBzZXRfQ3VsdHVyZQByZXNvdXJjZUN1bHR1cmUAVlNUQVJUU2Ny
+aXB0T2JqZWN0TW9kZWxCYXNlAEFwcGxpY2F0aW9uU2V0dGluZ3NCYXNlAFBhcnNlAEVkaXRvckJy
+b3dzYWJsZVN0YXRlAENvbXBpbGVyR2VuZXJhdGVkQXR0cmlidXRlAERlYnVnZ2VyTm9uVXNlckNv
+ZGVBdHRyaWJ1dGUARGVidWdnYWJsZUF0dHJpYnV0ZQBFZGl0b3JCcm93c2FibGVBdHRyaWJ1dGUA
+QXNzZW1ibHlUaXRsZUF0dHJpYnV0ZQBBc3NlbWJseVRyYWRlbWFya0F0dHJpYnV0ZQBUYXJnZXRG
+cmFtZXdvcmtBdHRyaWJ1dGUAQXNzZW1ibHlDb25maWd1cmF0aW9uQXR0cmlidXRlAEFzc2VtYmx5
+RGVzY3JpcHRpb25BdHRyaWJ1dGUAQ29tcGlsYXRpb25SZWxheGF0aW9uc0F0dHJpYnV0ZQBBc3Nl
+bWJseVByb2R1Y3RBdHRyaWJ1dGUAQXNzZW1ibHlDb3B5cmlnaHRBdHRyaWJ1dGUAU1NJU1Njcmlw
+dFRhc2tFbnRyeVBvaW50QXR0cmlidXRlAEFzc2VtYmx5Q29tcGFueUF0dHJpYnV0ZQBSdW50aW1l
+Q29tcGF0aWJpbGl0eUF0dHJpYnV0ZQBnZXRfVmFsdWUAdmFsdWUAU3lzdGVtLlJ1bnRpbWUuVmVy
+c2lvbmluZwBUb1N0cmluZwBNaWNyb3NvZnQuU3FsU2VydmVyLlNjcmlwdFRhc2sATWljcm9zb2Z0
+LlNxbFNlcnZlci5EdHMuVGFza3MuU2NyaXB0VGFzawBOZXR3b3JrQ3JlZGVudGlhbABTY3JpcHRP
+YmplY3RNb2RlbABTeXN0ZW0uQ29tcG9uZW50TW9kZWwAU3lzdGVtLk5ldC5NYWlsAFNUXzIxNjQ3
+OWZjYWQyZTQ3YzFiMjAxZjg1NThlNGUyMDFkLmRsbABzZXRfRW5hYmxlU3NsAGdldF9JdGVtAFN5
+c3RlbQBzZXRfRnJvbQBFbnVtAHJlc291cmNlTWFuAFNjcmlwdE1haW4AU3lzdGVtLkNvbmZpZ3Vy
+YXRpb24AU3lzdGVtLkdsb2JhbGl6YXRpb24AU3lzdGVtLlJlZmxlY3Rpb24ATWFpbEFkZHJlc3ND
+b2xsZWN0aW9uAEV4Y2VwdGlvbgBnZXRfVG8AQ3VsdHVyZUluZm8AZ2V0X1Jlc291cmNlTWFuYWdl
+cgAuY3RvcgAuY2N0b3IAU3lzdGVtLkRpYWdub3N0aWNzAFN5c3RlbS5SdW50aW1lLkNvbXBpbGVy
+U2VydmljZXMAU3lzdGVtLlJlc291cmNlcwBTVF8yMTY0NzlmY2FkMmU0N2MxYjIwMWY4NTU4ZTRl
+MjAxZC5Qcm9wZXJ0aWVzLlJlc291cmNlcy5yZXNvdXJjZXMARGVidWdnaW5nTW9kZXMAU1RfMjE2
+NDc5ZmNhZDJlNDdjMWIyMDFmODU1OGU0ZTIwMWQuUHJvcGVydGllcwBnZXRfVmFyaWFibGVzAFNl
+dHRpbmdzAHNldF9DcmVkZW50aWFscwBTdWNjZXNzAE1haWxBZGRyZXNzAGdldF9EdHMAU2NyaXB0
+UmVzdWx0cwBDb25jYXQAT2JqZWN0AHNldF9TdWJqZWN0AFN5c3RlbS5OZXQAZ2V0X0RlZmF1bHQA
+c2V0X1Rhc2tSZXN1bHQAU210cENsaWVudABzZXRfUG9ydABJQ3JlZGVudGlhbHNCeUhvc3QAc2V0
+X0JvZHkAZ2V0X0Fzc2VtYmx5AAAAACVVAHMAZQByADoAOgB2AGEAcgBGAHIAbwBtAEUAbQBhAGkA
+bAAAIVUAcwBlAHIAOgA6AHYAYQByAFQAbwBFAG0AYQBpAGwAACtVAHMAZQByADoAOgB2AGEAcgBT
+AHUAYgBqAGUAYwB0AEUAcgByAG8AcgAAG1UAcwBlAHIAOgA6AHYAYQByAEIAbwBkAHkAAAMgAAAn
+UwB5AHMAdABlAG0AOgA6AFAAYQBjAGsAYQBnAGUATgBhAG0AZQAAI1MAeQBzAHQAZQBtADoAOgBF
+AHIAcgBvAHIAQwBvAGQAZQAAMVMAeQBzAHQAZQBtADoAOgBFAHIAcgBvAHIARABlAHMAYwByAGkA
+cAB0AGkAbwBuAAAjUwB5AHMAdABlAG0AOgA6AFMAdABhAHIAdABUAGkAbQBlAAAnVQBzAGUAcgA6
+ADoAdgBhAHIAUwBtAHQAcABDAGwAaQBlAG4AdAAAI1UAcwBlAHIAOgA6AHYAYQByAFAAYQBzAHMA
+dwBvAHIAZAAAL1UAcwBlAHIAOgA6AHYAYQByAFMAbQB0AHAAUwBlAHIAdgBlAHIAUABvAHIAdAAA
+cVMAVABfADIAMQA2ADQANwA5AGYAYwBhAGQAMgBlADQANwBjADEAYgAyADAAMQBmADgANQA1ADgA
+ZQA0AGUAMgAwADEAZAAuAFAAcgBvAHAAZQByAHQAaQBlAHMALgBSAGUAcwBvAHUAcgBjAGUAcwAA
+AAAAyiSq5gQaMUaiT43n+JvD+QAEIAEBCAMgAAEFIAEBEREEIAEBDgUgAQERWQsHCA4ODg4ODggS
+PQQgABJpBCAAEm0FIAEScRwDIAAcAyAADgUAAQ4dDgQAAQgOBiABARKAgQUgABKAhQUgAgEODgYg
+AQESgI0EIAEBAgUgAQESPQgAARKAkRGAlQUgABKAmQcgAgEOEoCZCLd6XFYZNOCJCImEXc2AgMyR
+BAAAAAAEAQAAAAMGElEDBhJVAwYSEAIGCAMGERQEAAASUQQAABJVBQABARJVBAAAEhADAAABBAgA
+ElEECAASVQQIABIQCAEACAAAAAAAHgEAAQBUAhZXcmFwTm9uRXhjZXB0aW9uVGhyb3dzAQgBAAIA
+AAAAACgBACNTVF8yMTY0NzlmY2FkMmU0N2MxYjIwMWY4NTU4ZTRlMjAxZAAABQEAAAAAFgEAEUNv
+cHlyaWdodCBAICAyMDIwAABJAQAaLk5FVEZyYW1ld29yayxWZXJzaW9uPXY0LjcBAFQOFEZyYW1l
+d29ya0Rpc3BsYXlOYW1lEi5ORVQgRnJhbWV3b3JrIDQuNwAAtAAAAM7K774BAAAAkQAAAGxTeXN0
+ZW0uUmVzb3VyY2VzLlJlc291cmNlUmVhZGVyLCBtc2NvcmxpYiwgVmVyc2lvbj00LjAuMC4wLCBD
+dWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWI3N2E1YzU2MTkzNGUwODkjU3lzdGVtLlJl
+c291cmNlcy5SdW50aW1lUmVzb3VyY2VTZXQCAAAAAAAAAAAAAABQQURQQURQtAAAAJwyAAAAAAAA
+AAAAALYyAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAACoMgAAAAAAAAAAAAAAAF9Db3JEbGxNYWlu
+AG1zY29yZWUuZGxsAAAAAAD/JQAgABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -15056,14 +14942,14 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAQAQAAAAGAAAgAAAAAAAAAAAAAAAAAAAAQABAAAAMAAAgAAAAAAAAAAAAAAAAAAAAQAAAAAA
 SAAAAFhAAAAaBAAAAAAAAAAAAAAaBDQAAABWAFMAXwBWAEUAUgBTAEkATwBOAF8ASQBOAEYATwAA
-AAAAvQTv/gAAAQAAAAEA4HyCHQAAAQDgfIIdPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQA
+AAAAvQTv/gAAAQAAAAEAkIGUHQAAAQCQgZQdPwAAAAAAAAAEAAAAAgAAAAAAAAAAAAAAAAAAAEQA
 AAABAFYAYQByAEYAaQBsAGUASQBuAGYAbwAAAAAAJAAEAAAAVAByAGEAbgBzAGwAYQB0AGkAbwBu
 AAAAAAAAALAEegMAAAEAUwB0AHIAaQBuAGcARgBpAGwAZQBJAG4AZgBvAAAAVgMAAAEAMAAwADAA
 MAAwADQAYgAwAAAAGgABAAEAQwBvAG0AbQBlAG4AdABzAAAAAAAAACIAAQABAEMAbwBtAHAAYQBu
 AHkATgBhAG0AZQAAAAAAAAAAAHAAJAABAEYAaQBsAGUARABlAHMAYwByAGkAcAB0AGkAbwBuAAAA
 AABTAFQAXwAyADEANgA0ADcAOQBmAGMAYQBkADIAZQA0ADcAYwAxAGIAMgAwADEAZgA4ADUANQA4
 AGUANABlADIAMAAxAGQAAAA+AA8AAQBGAGkAbABlAFYAZQByAHMAaQBvAG4AAAAAADEALgAwAC4A
-NwA1ADUANAAuADMAMQA5ADYAOAAAAAAAcAAoAAEASQBuAHQAZQByAG4AYQBsAE4AYQBtAGUAAABT
+NwA1ADcAMgAuADMAMwAxADYAOAAAAAAAcAAoAAEASQBuAHQAZQByAG4AYQBsAE4AYQBtAGUAAABT
 AFQAXwAyADEANgA0ADcAOQBmAGMAYQBkADIAZQA0ADcAYwAxAGIAMgAwADEAZgA4ADUANQA4AGUA
 NABlADIAMAAxAGQALgBkAGwAbAAAAEgAEgABAEwAZQBnAGEAbABDAG8AcAB5AHIAaQBnAGgAdAAA
 AEMAbwBwAHkAcgBpAGcAaAB0ACAAQAAgACAAMgAwADIAMAAAACoAAQABAEwAZQBnAGEAbABUAHIA
@@ -15072,15 +14958,15 @@ AG0AZQAAAFMAVABfADIAMQA2ADQANwA5AGYAYwBhAGQAMgBlADQANwBjADEAYgAyADAAMQBmADgA
 NQA1ADgAZQA0AGUAMgAwADEAZAAuAGQAbABsAAAAaAAkAAEAUAByAG8AZAB1AGMAdABOAGEAbQBl
 AAAAAABTAFQAXwAyADEANgA0ADcAOQBmAGMAYQBkADIAZQA0ADcAYwAxAGIAMgAwADEAZgA4ADUA
 NQA4AGUANABlADIAMAAxAGQAAABCAA8AAQBQAHIAbwBkAHUAYwB0AFYAZQByAHMAaQBvAG4AAAAx
-AC4AMAAuADcANQA1ADQALgAzADEAOQA2ADgAAAAAAEYADwABAEEAcwBzAGUAbQBiAGwAeQAgAFYA
-ZQByAHMAaQBvAG4AAAAxAC4AMAAuADcANQA1ADQALgAzADEAOQA2ADgAAAAAAAAAAAAAAAAAAAAA
+AC4AMAAuADcANQA3ADIALgAzADMAMQA2ADgAAAAAAEYADwABAEEAcwBzAGUAbQBiAGwAeQAgAFYA
+ZQByAHMAaQBvAG4AAAAxAC4AMAAuADcANQA3ADIALgAzADMAMQA2ADgAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAgDIAAAAA
+AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAwAAAMAAAAyDIAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -15123,43 +15009,39 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           Id="Package\DFT_QuickenLoan_SalesForce"
           TopLeft="164.670332474649,218.941179541155" />
         <NodeLayout
-          Size="310.4,41.6"
-          Id="Package\EST_DeleteQuickenLoanRecordFromStagingTable"
-          TopLeft="378.296709739059,53.2352948642523" />
-        <NodeLayout
           Size="142.4,41.6"
           Id="Package\EST_ETL_Log"
           TopLeft="234.120883107935,339.710411348208" />
         <NodeLayout
           Size="210.4,41.6"
           Id="Package\EST_Max(LastModifiedDate)"
-          TopLeft="112.142859052639,97.8823543139396" />
+          TopLeft="117.857144864239,82.5882364523866" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="217.342859052639,139.48235431394">
+          TopLeft="223.057144864239,124.188236452387">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="56.9274734220099,79.4588252272154"
+              EndConnector="51.2131876104104,94.7529430887684"
               Start="0,0"
-              End="56.9274734220099,71.9588252272154">
+              End="51.2131876104104,87.2529430887684">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.7294126136077" />
+                    End="0,43.3764715443842" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,35.7294126136077"
-                    Point2="0,39.7294126136077"
-                    Point3="4,39.7294126136077" />
+                    Point1="0,43.3764715443842"
+                    Point2="0,47.3764715443842"
+                    Point3="4,47.3764715443842" />
                   <mssgle:LineSegment
-                    End="52.9274734220099,39.7294126136077" />
+                    End="47.2131876104104,47.3764715443842" />
                   <mssgle:CubicBezierSegment
-                    Point1="52.9274734220099,39.7294126136077"
-                    Point2="56.9274734220099,39.7294126136077"
-                    Point3="56.9274734220099,43.7294126136077" />
+                    Point1="47.2131876104104,47.3764715443842"
+                    Point2="51.2131876104104,47.3764715443842"
+                    Point3="51.2131876104104,51.3764715443842" />
                   <mssgle:LineSegment
-                    End="56.9274734220099,71.9588252272154" />
+                    End="51.2131876104104,87.2529430887684" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15261,17 +15143,13 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
       <GraphLayout
         Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
-          Size="162.4,41.6"
-          Id="Package\DFT_QuickenLoan_SalesForce\Derived Column 1"
-          TopLeft="49.8412706900622,126.136304966679" />
-        <NodeLayout
           Size="166.4,41.6"
           Id="Package\DFT_QuickenLoan_SalesForce\Fuzzy Lookup_MIC"
-          TopLeft="336.336513350934,135.515034501747" />
+          TopLeft="267.765083611741,134.750328608669" />
         <NodeLayout
           Size="209.6,41.6"
           Id="Package\DFT_QuickenLoan_SalesForce\Lookup_MarketSourceName"
-          TopLeft="639.74921693072,138.828760038417" />
+          TopLeft="541.17778668063,114.358171459932" />
         <NodeLayout
           Size="228,41.6"
           Id="Package\DFT_QuickenLoan_SalesForce\Salesforce Source_QuickenLoan"
@@ -15279,7 +15157,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         <NodeLayout
           Size="250.4,41.6"
           Id="Package\DFT_QuickenLoan_SalesForce\Derived Column_DT_WSTR_DT_STR"
-          TopLeft="620.714296284988,25.2352944715626" />
+          TopLeft="342.142862969516,27.5294121507955" />
         <NodeLayout
           Size="129.6,41.6"
           Id="Package\DFT_QuickenLoan_SalesForce\Row Count"
@@ -15288,6 +15166,34 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           Size="226.4,41.6"
           Id="Package\DFT_QuickenLoan_SalesForce\OLE DB Destination_SalesForce"
           TopLeft="313.210683544625,235.444447746464" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\DFT_QuickenLoan_SalesForce\Derived Column 1"
+          TopLeft="49.8412706900622,126.136304966679" />
+        <EdgeLayout
+          Id="Package\DFT_QuickenLoan_SalesForce.Paths[Salesforce Source Output]"
+          TopLeft="252.285714699297,47.182353311179">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="89.8571482702191,0"
+              Start="0,0"
+              End="82.3571482702191,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="82.3571482702191,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_QuickenLoan_SalesForce.Paths[Row Count Output 1]"
           TopLeft="187.292063466383,259.579740485985">
@@ -15307,65 +15213,81 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_QuickenLoan_SalesForce.Paths[Lookup Match Output]"
-          TopLeft="639.74921693072,157.971897270082">
+          TopLeft="541.17778668063,135.158171459932">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-137.012703579786,0"
+              EndConnector="-107.012703068889,20.3921571487366"
               Start="0,0"
-              End="-129.512703579786,0">
+              End="-99.5127030688888,20.3921571487366">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-129.512703579786,0" />
+                    End="-49.5063515344444,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-49.5063515344444,0"
+                    Point2="-53.5063515344444,0"
+                    Point3="-53.5063515344444,4" />
+                  <mssgle:LineSegment
+                    End="-53.5063515344444,16.3921571487366" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-53.5063515344444,16.3921571487366"
+                    Point2="-53.5063515344444,20.3921571487366"
+                    Point3="-57.5063515344444,20.3921571487366" />
+                  <mssgle:LineSegment
+                    End="-99.5127030688888,20.3921571487366" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-112.947738508643,5,96.3827734375,11.609375"
+              BoundingBox="-101.697738253194,-17.609375,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_QuickenLoan_SalesForce.Paths[Fuzzy Lookup Output]"
-          TopLeft="336.336513350934,156.315034501747">
+          TopLeft="267.765083611741,155.550328608669">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-124.095242660872,-9.37872953506803"
+              EndConnector="-55.5238129216787,-8.61402364199034"
               Start="0,0"
-              End="-116.595242660872,-9.37872953506803">
+              End="-48.0238129216787,-8.61402364199034">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-58.047621330436,0" />
+                    End="-23.7619064608394,0" />
                   <mssgle:CubicBezierSegment
-                    Point1="-58.047621330436,0"
-                    Point2="-62.047621330436,0"
-                    Point3="-62.047621330436,-4" />
+                    Point1="-23.7619064608394,0"
+                    Point2="-27.7619064608394,0"
+                    Point3="-27.7619064608394,-4" />
                   <mssgle:LineSegment
-                    End="-62.047621330436,-5.37872953506803" />
+                    End="-27.7619064608394,-4.61402364199034" />
                   <mssgle:CubicBezierSegment
-                    Point1="-62.047621330436,-5.37872953506803"
-                    Point2="-62.047621330436,-9.37872953506803"
-                    Point3="-66.047621330436,-9.37872953506803" />
+                    Point1="-27.7619064608394,-4.61402364199034"
+                    Point2="-27.7619064608394,-8.61402364199034"
+                    Point3="-31.7619064608394,-8.61402364199034" />
                   <mssgle:LineSegment
-                    End="-116.595242660872,-9.37872953506803" />
+                    End="-48.0238129216787,-8.61402364199034" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
@@ -15399,78 +15321,44 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_QuickenLoan_SalesForce.Paths[Derived Column Output]"
-          TopLeft="745.231756607854,66.8352944715626">
+          TopLeft="467.342862969516,69.1294121507955">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="0,71.9934655668544"
+              EndConnector="178.634923711113,45.2287593091369"
               Start="0,0"
-              End="0,64.4934655668544">
+              End="178.634923711113,37.7287593091369">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,64.4934655668544" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="179.2,41.6"
-          Id="Package\DFT_QuickenLoan_SalesForce\CS_Incremental Load"
-          TopLeft="352.857148866264,20.6470591130966" />
-        <EdgeLayout
-          Id="Package\DFT_QuickenLoan_SalesForce.Paths[Salesforce Source Output]"
-          TopLeft="252.285714699297,43.7411767923296">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="100.571434166967,0"
-              Start="0,0"
-              End="93.0714341669669,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
+                    End="0,18.6143796545685" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.6143796545685"
+                    Point2="0,22.6143796545685"
+                    Point3="4,22.6143796545685" />
                   <mssgle:LineSegment
-                    End="93.0714341669669,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <EdgeLayout
-          Id="Package\DFT_QuickenLoan_SalesForce.Paths[Keep]"
-          TopLeft="532.057148866264,43.7411767923296">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="88.6571474187238,0"
-              Start="0,0"
-              End="81.1571474187238,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
+                    End="174.634923711113,22.6143796545685" />
+                  <mssgle:CubicBezierSegment
+                    Point1="174.634923711113,22.6143796545685"
+                    Point2="178.634923711113,22.6143796545685"
+                    Point3="178.634923711113,26.6143796545685" />
                   <mssgle:LineSegment
-                    End="81.1571474187238,0" />
+                    End="178.634923711113,37.7287593091369" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="29.1275971468619,5,22.901953125,11.2822265625"
+              BoundingBox="0,0,0,0"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
@@ -15496,7 +15384,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
       <Property>
         <Name>OverwriteParamsSQLProp</Name>
         <Value
-          type="q2:boolean">false</Value>
+          type="q2:string">false</Value>
       </Property>
       <Property>
         <Name>UsedTableName</Name>
@@ -15506,7 +15394,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
       <Property>
         <Name>TableInfoObjectType</Name>
         <Value
-          type="q4:int">0</Value>
+          type="q4:string">0</Value>
       </Property>
       <Property>
         <Name>DataSourceViewID</Name>
