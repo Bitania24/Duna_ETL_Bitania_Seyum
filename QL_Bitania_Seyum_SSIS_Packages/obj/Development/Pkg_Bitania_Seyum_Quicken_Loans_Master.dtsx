@@ -11,10 +11,22 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_Bitania_Seyum_Quicken_Loans_Master"
   DTS:PackageType="5"
-  DTS:VersionBuild="6"
-  DTS:VersionGUID="{7B899E34-B400-4FBB-9844-1076F78350F5}">
+  DTS:VersionBuild="12"
+  DTS:VersionGUID="{F575E3EC-75B5-46EB-B18B-820FFFD0839C}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[DESKTOP-JAOOFHH.SSISDB]"
+      DTS:CreationName="OLEDB"
+      DTS:DTSID="{CAF4E78D-E0F4-4DED-8735-8BFA7F416AF3}"
+      DTS:ObjectName="DESKTOP-JAOOFHH.SSISDB">
+      <DTS:ObjectData>
+        <DTS:ConnectionManager
+          DTS:ConnectionString="Data Source=DESKTOP-JAOOFHH;Initial Catalog=SSISDB;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
   <DTS:Variables>
     <DTS:Variable
       DTS:CreationName=""
@@ -23,14 +35,100 @@
       DTS:Namespace="User"
       DTS:ObjectName="varPackageName">
       <DTS:VariableValue
-        DTS:DataType="8">Pkg_Bitania_Seyum_LendingQB</DTS:VariableValue>
+        DTS:DataType="8">Pkg_Bitania_Seyum_LendingPad.dtsx</DTS:VariableValue>
     </DTS:Variable>
   </DTS:Variables>
   <DTS:Executables>
     <DTS:Executable
+      DTS:refId="Package\EST LendingPad"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{51FE5F68-2961-4227-9310-9B595FE4D76E}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST LendingPad"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CAF4E78D-E0F4-4DED-8735-8BFA7F416AF3}"
+          SQLTask:SqlStatementSource="DECLARE @output_execution_id BIGINT&#xA;&#x9;EXEC dbo.Execute_SSIS_LendingPad&#xA;&#x9;@output_execution_id output&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST LendingQB"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{1EDE9B56-1CA0-4FBB-A3A8-7C56DC6ADE98}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST LendingQB"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CAF4E78D-E0F4-4DED-8735-8BFA7F416AF3}"
+          SQLTask:SqlStatementSource="DECLARE @output_execution_id BIGINT&#xA;&#x9;EXEC dbo.Execute_SSIS_LendingQB&#xA;&#x9;@output_execution_id output&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST QuickenLoan"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{F81CCAF6-31FD-4546-A884-08EF5B6A9261}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST QuickenLoan"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CAF4E78D-E0F4-4DED-8735-8BFA7F416AF3}"
+          SQLTask:SqlStatementSource="DECLARE @output_execution_id BIGINT&#xA;&#x9;EXEC dbo.Execute_SSIS_QuickenLoan&#xA;&#x9;@output_execution_id output&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST SimpleNexus"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{E1A7064E-A3F1-4E53-9E37-7BFCC2070B26}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST SimpleNexus"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CAF4E78D-E0F4-4DED-8735-8BFA7F416AF3}"
+          SQLTask:SqlStatementSource="DECLARE @output_execution_id BIGINT&#xA;&#x9;EXEC dbo.Execute_SSIS_SimpleNexus&#xA;&#x9;@output_execution_id output&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\EST UberWriter"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{06A5F379-6349-4F0A-8FC8-6421CD4B7655}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="EST UberWriter"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{CAF4E78D-E0F4-4DED-8735-8BFA7F416AF3}"
+          SQLTask:SqlStatementSource="&#x9;&#xA;DECLARE @output_execution_id BIGINT&#xA;&#x9;EXEC dbo.Execute_SSIS_UberWriter&#xA;&#x9;@output_execution_id output&#xA;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
       DTS:refId="Package\Foreach Loop Container"
       DTS:CreationName="STOCK:FOREACHLOOP"
       DTS:Description="Foreach Loop Container"
+      DTS:Disabled="True"
       DTS:DTSID="{AA3CF622-5907-4B2F-8CA1-25FCBD15BBDF}"
       DTS:ExecutableType="STOCK:FOREACHLOOP"
       DTS:LocaleID="-1"
@@ -81,10 +179,12 @@
           DTS:ObjectName="EPT_MasterPackage"
           DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
           <DTS:Variables />
+          <DTS:PropertyExpression
+            DTS:Name="PackageName">@[User::varPackageName]</DTS:PropertyExpression>
           <DTS:ObjectData>
             <ExecutePackageTask>
               <UseProjectReference>True</UseProjectReference>
-              <PackageName>Pkg_Bitania_Seyum_LendingQB.dtsx</PackageName>
+              <PackageName>Pkg_Bitania_Seyum_LendingPad.dtsx</PackageName>
             </ExecutePackageTask>
           </DTS:ObjectData>
         </DTS:Executable>
@@ -92,13 +192,47 @@
       <DTS:ForEachVariableMappings>
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
-          DTS:DTSID="{FF3087B9-9346-48E7-8EA8-A3AFE62C7273}"
-          DTS:ObjectName="{FF3087B9-9346-48E7-8EA8-A3AFE62C7273}"
+          DTS:DTSID="{CE2546C1-3C72-4805-8A16-A70D6D5C2981}"
+          DTS:ObjectName="{CE2546C1-3C72-4805-8A16-A70D6D5C2981}"
           DTS:ValueIndex="0"
           DTS:VariableName="User::varPackageName" />
       </DTS:ForEachVariableMappings>
     </DTS:Executable>
   </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{79CCF33A-80FF-4847-9F0D-BD281095B414}"
+      DTS:From="Package\EST LendingPad"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\EST LendingQB" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{6EEBA864-0856-4A06-A057-F86FE496F27B}"
+      DTS:From="Package\EST LendingQB"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\EST QuickenLoan" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{8F64A835-BA9F-47A3-BE80-550A02461620}"
+      DTS:From="Package\EST QuickenLoan"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\EST SimpleNexus" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 3]"
+      DTS:CreationName=""
+      DTS:DTSID="{18723A38-D552-4A71-9701-EE0682F5A413}"
+      DTS:From="Package\EST SimpleNexus"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 3"
+      DTS:To="Package\EST UberWriter" />
+  </DTS:PrecedenceConstraints>
   <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
 <!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
 <!--If you manually edit this section and make a mistake, you can delete it. -->
@@ -110,18 +244,162 @@
     design-time-name="Package">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
           Size="172.8,41.6"
           Id="Package\Foreach Loop Container\EPT_MasterPackage"
-          TopLeft="51.7428602447315,65.0823557725003" />
+          TopLeft="68.8857176795298,26.9117650061742" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
           PanelSize="280.8,291.2"
           Size="280.8,334.4"
           Id="Package\Foreach Loop Container"
-          TopLeft="130.000002213887,123.88235467858" />
+          TopLeft="507.142865779449,114.705883961648" />
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\EST LendingPad"
+          TopLeft="73.5714298243426,58.8823537669793" />
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\EST LendingQB"
+          TopLeft="95.0000016178403,150.647060936298" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\EST QuickenLoan"
+          TopLeft="115.714287684888,253.117650608703" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\EST SimpleNexus"
+          TopLeft="114.285716231989,344.882357778021" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\EST UberWriter"
+          TopLeft="194.28571759438,438.941182626573" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="150.771429824343,100.482353766979">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="19.4285717934978,50.1647071693183"
+              Start="0,0"
+              End="19.4285717934978,42.6647071693183">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.0823535846591" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.0823535846591"
+                    Point2="0,25.0823535846591"
+                    Point3="4,25.0823535846591" />
+                  <mssgle:LineSegment
+                    End="15.4285717934978,25.0823535846591" />
+                  <mssgle:CubicBezierSegment
+                    Point1="15.4285717934978,25.0823535846591"
+                    Point2="19.4285717934978,25.0823535846591"
+                    Point3="19.4285717934978,29.0823535846591" />
+                  <mssgle:LineSegment
+                    End="19.4285717934978,42.6647071693183" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="170.20000161784,192.247060936298">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="25.514286067048,60.8705896724054"
+              Start="0,0"
+              End="25.514286067048,53.3705896724054">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.4352948362027" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.4352948362027"
+                    Point2="0,30.4352948362027"
+                    Point3="4,30.4352948362027" />
+                  <mssgle:LineSegment
+                    End="21.514286067048,30.4352948362027" />
+                  <mssgle:CubicBezierSegment
+                    Point1="21.514286067048,30.4352948362027"
+                    Point2="25.514286067048,30.4352948362027"
+                    Point3="25.514286067048,34.4352948362027" />
+                  <mssgle:LineSegment
+                    End="25.514286067048,53.3705896724054" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="195.000001958438,294.717650608703">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.1647071693183"
+              Start="0,0"
+              End="0,42.6647071693183">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.6647071693183" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 3]"
+          TopLeft="194.285716231989,386.482357778021">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="75.6000013623919,52.4588248485513"
+              Start="0,0"
+              End="75.6000013623919,44.9588248485513">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.2294124242756" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.2294124242756"
+                    Point2="0,26.2294124242756"
+                    Point3="4,26.2294124242756" />
+                  <mssgle:LineSegment
+                    End="71.6000013623919,26.2294124242756" />
+                  <mssgle:CubicBezierSegment
+                    Point1="71.6000013623919,26.2294124242756"
+                    Point2="75.6000013623919,26.2294124242756"
+                    Point3="75.6000013623919,30.2294124242756" />
+                  <mssgle:LineSegment
+                    End="75.6000013623919,44.9588248485513" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </Package>

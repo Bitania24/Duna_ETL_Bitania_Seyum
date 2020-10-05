@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_Bitania_Seyum_QuickenLoan"
   DTS:PackageType="5"
-  DTS:VersionBuild="347"
-  DTS:VersionGUID="{90F18A22-17B1-4891-9FA7-F36E95D9D1C3}">
+  DTS:VersionBuild="394"
+  DTS:VersionGUID="{095262F0-3506-4BC0-BD01-A833EB87AD44}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -35,6 +35,15 @@
       DTS:ObjectName="VarDeleteQuickenLoanTable">
       <DTS:VariableValue
         DTS:DataType="8">Delete From [dbo].[Stg_Bitania_Seyum_QL] Where SourceName = 'QuickenLoan'</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{43EC7CEC-A209-4742-85BE-83B9A371D87C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="VarDuna">
+      <DTS:VariableValue
+        DTS:DataType="7">10/1/2020 5:33:59 PM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -64,7 +73,20 @@ IF EXISTS (   SELECT [SourceName], MAX(LastModifiedDate) AS MaxLastModifiedDate 
       DTS:Namespace="User"
       DTS:ObjectName="varLastModifiedDate">
       <DTS:VariableValue
-        DTS:DataType="7">9/15/2020 8:50:47 PM</DTS:VariableValue>
+        DTS:DataType="7">9/15/2020 8:50:00 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{16DE9210-B723-4D64-92DE-7737C035817F}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;select max(LastModifiedDate) as LastModifiedDate&#xA;from Stg_Bitania_Seyum_QL&#xA;where SourceName = 'QuickenLoan' &quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="varMax">
+      <DTS:VariableValue
+        DTS:DataType="8">select max(LastModifiedDate) as LastModifiedDate
+from Stg_Bitania_Seyum_QL
+where SourceName = 'QuickenLoan' </DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -93,7 +115,7 @@ IF EXISTS (   SELECT [SourceName], MAX(LastModifiedDate) AS MaxLastModifiedDate 
       DTS:Namespace="User"
       DTS:ObjectName="varRunTime">
       <DTS:VariableValue
-        DTS:DataType="7">9/24/2020 6:26:46 PM</DTS:VariableValue>
+        DTS:DataType="7">10/2/2020 2:00:29 PM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -142,7 +164,7 @@ IF EXISTS (   SELECT [SourceName], MAX(LastModifiedDate) AS MaxLastModifiedDate 
       DTS:Namespace="User"
       DTS:ObjectName="varTimeStamp">
       <DTS:VariableValue
-        DTS:DataType="7">9/24/2020 6:26:46 PM</DTS:VariableValue>
+        DTS:DataType="7">10/2/2020 2:00:29 PM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -169,6 +191,95 @@ IF EXISTS (   SELECT [SourceName], MAX(LastModifiedDate) AS MaxLastModifiedDate 
         <pipeline
           version="1">
           <components>
+            <component
+              refId="Package\DFT_QuickenLoan_SalesForce\Conditional Split"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Conditional Split"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT_QuickenLoan_SalesForce\Conditional Split.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT_QuickenLoan_SalesForce\Conditional Split.Inputs[Conditional Split Input].Columns[LastModifiedDate__c]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="LastModifiedDate__c"
+                      lineageId="Package\DFT_QuickenLoan_SalesForce\Salesforce Source_QuickenLoan.Outputs[Salesforce Source Output].Columns[LastModifiedDate__c]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT_QuickenLoan_SalesForce\Conditional Split.Outputs[Keep]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Keep"
+                  synchronousInputId="Package\DFT_QuickenLoan_SalesForce\Conditional Split.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\DFT_QuickenLoan_SalesForce\Salesforce Source_QuickenLoan.Outputs[Salesforce Source Output].Columns[LastModifiedDate__c]} &gt; @[User::varLastModifiedDate]</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">LastModifiedDate__c &gt; @[User::varLastModifiedDate]</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_QuickenLoan_SalesForce\Conditional Split.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\DFT_QuickenLoan_SalesForce\Conditional Split.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT_QuickenLoan_SalesForce\Conditional Split.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\DFT_QuickenLoan_SalesForce\Conditional Split.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT_QuickenLoan_SalesForce\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT_QuickenLoan_SalesForce\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT_QuickenLoan_SalesForce\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT_QuickenLoan_SalesForce\Conditional Split.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
             <component
               refId="Package\DFT_QuickenLoan_SalesForce\Derived Column 1"
               componentClassID="Microsoft.DerivedColumn"
@@ -12574,10 +12685,7 @@ where [refTable].[MarketSourceCode] = ?</property>
     , UnderwriterRiskAssess__c
     , UnderwritingReceivedDate__c
   FROM Quicken_Loans__c
-  Where (BorrFirstName__c &lt;&gt;'Test' OR BorrLastName__c&lt;&gt;'Test') 
-  And LastModifiedDate__c &gt; @[User::varLastModifiedDate]
-  
-  </property>
+where (BorrFirstName__c &lt;&gt; 'Test' or BorrLastName__c &lt;&gt; 'Test')</property>
                 <property
                   dataType="System.Int32"
                   description="Specifies the batch size of the query."
@@ -14099,6 +14207,11 @@ where [refTable].[MarketSourceCode] = ?</property>
               name="Fuzzy Lookup Output"
               startId="Package\DFT_QuickenLoan_SalesForce\Fuzzy Lookup_MIC.Outputs[Fuzzy Lookup Output]" />
             <path
+              refId="Package\DFT_QuickenLoan_SalesForce.Paths[Keep]"
+              endId="Package\DFT_QuickenLoan_SalesForce\Derived Column_DT_WSTR_DT_STR.Inputs[Derived Column Input]"
+              name="Keep"
+              startId="Package\DFT_QuickenLoan_SalesForce\Conditional Split.Outputs[Keep]" />
+            <path
               refId="Package\DFT_QuickenLoan_SalesForce.Paths[Lookup Match Output]"
               endId="Package\DFT_QuickenLoan_SalesForce\Fuzzy Lookup_MIC.Inputs[Fuzzy Lookup Input]"
               name="Lookup Match Output"
@@ -14110,7 +14223,7 @@ where [refTable].[MarketSourceCode] = ?</property>
               startId="Package\DFT_QuickenLoan_SalesForce\Row Count.Outputs[Row Count Output 1]" />
             <path
               refId="Package\DFT_QuickenLoan_SalesForce.Paths[Salesforce Source Output]"
-              endId="Package\DFT_QuickenLoan_SalesForce\Derived Column_DT_WSTR_DT_STR.Inputs[Derived Column Input]"
+              endId="Package\DFT_QuickenLoan_SalesForce\Conditional Split.Inputs[Conditional Split Input]"
               name="Salesforce Source Output"
               startId="Package\DFT_QuickenLoan_SalesForce\Salesforce Source_QuickenLoan.Outputs[Salesforce Source Output]" />
           </paths>
@@ -14178,13 +14291,13 @@ where [refTable].[MarketSourceCode] = ?</property>
       </DTS:ObjectData>
     </DTS:Executable>
     <DTS:Executable
-      DTS:refId="Package\EST_Max(LastModifiedDate)"
+      DTS:refId="Package\Execute SQL Task"
       DTS:CreationName="Microsoft.ExecuteSQLTask"
       DTS:Description="Execute SQL Task"
-      DTS:DTSID="{CCD53056-760B-4B3D-B57D-A41B50249044}"
+      DTS:DTSID="{87F381F0-B504-41B3-82D7-188053EBEF1A}"
       DTS:ExecutableType="Microsoft.ExecuteSQLTask"
       DTS:LocaleID="-1"
-      DTS:ObjectName="EST_Max(LastModifiedDate)"
+      DTS:ObjectName="Execute SQL Task"
       DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2019; © 2019 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
       DTS:ThreadHint="0">
       <DTS:Variables />
@@ -14192,20 +14305,11 @@ where [refTable].[MarketSourceCode] = ?</property>
         <SQLTask:SqlTaskData
           SQLTask:Connection="{2643CC30-94EE-474D-BFBB-4DFD85E9808F}"
           SQLTask:SqlStmtSourceType="Variable"
-          SQLTask:SqlStatementSource="User::varGetMaxLastModifiedDate"
+          SQLTask:SqlStatementSource="User::varMax"
           SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
           <SQLTask:ResultBinding
-            SQLTask:ResultName="SourceName"
-            SQLTask:DtsVariableName="User::varSourceName" />
-          <SQLTask:ResultBinding
-            SQLTask:ResultName="MaxLastModifiedDate"
+            SQLTask:ResultName="LastModifiedDate"
             SQLTask:DtsVariableName="User::varLastModifiedDate" />
-          <SQLTask:ParameterBinding
-            SQLTask:ParameterName="0"
-            SQLTask:DtsVariableName="User::varSourceName"
-            SQLTask:ParameterDirection="Input"
-            SQLTask:DataType="129"
-            SQLTask:ParameterSize="-1" />
         </SQLTask:SqlTaskData>
       </DTS:ObjectData>
     </DTS:Executable>
@@ -14214,8 +14318,8 @@ where [refTable].[MarketSourceCode] = ?</property>
     <DTS:PrecedenceConstraint
       DTS:refId="Package.PrecedenceConstraints[Constraint]"
       DTS:CreationName=""
-      DTS:DTSID="{BA689957-638C-41B4-A91D-8C52D12B083C}"
-      DTS:From="Package\EST_Max(LastModifiedDate)"
+      DTS:DTSID="{9D6142D4-F057-4447-BA73-13F33A25C857}"
+      DTS:From="Package\Execute SQL Task"
       DTS:LogicalAnd="True"
       DTS:ObjectName="Constraint"
       DTS:To="Package\DFT_QuickenLoan_SalesForce" />
@@ -15007,41 +15111,29 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         <NodeLayout
           Size="219.2,41.6"
           Id="Package\DFT_QuickenLoan_SalesForce"
-          TopLeft="164.670332474649,218.941179541155" />
+          TopLeft="119.670331708304,218.176473648077" />
         <NodeLayout
           Size="142.4,41.6"
           Id="Package\EST_ETL_Log"
-          TopLeft="234.120883107935,339.710411348208" />
+          TopLeft="156.978024651343,347.357470278985" />
         <NodeLayout
-          Size="210.4,41.6"
-          Id="Package\EST_Max(LastModifiedDate)"
-          TopLeft="117.857144864239,82.5882364523866" />
+          Size="162.4,41.6"
+          Id="Package\Execute SQL Task"
+          TopLeft="144.285716742886,54.2941184085133" />
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint]"
-          TopLeft="223.057144864239,124.188236452387">
+          TopLeft="227.378024225595,95.8941184085133">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="51.2131876104104,94.7529430887684"
+              EndConnector="0,122.282355239564"
               Start="0,0"
-              End="51.2131876104104,87.2529430887684">
+              End="0,114.782355239564">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,43.3764715443842" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,43.3764715443842"
-                    Point2="0,47.3764715443842"
-                    Point3="4,47.3764715443842" />
-                  <mssgle:LineSegment
-                    End="47.2131876104104,47.3764715443842" />
-                  <mssgle:CubicBezierSegment
-                    Point1="47.2131876104104,47.3764715443842"
-                    Point2="51.2131876104104,47.3764715443842"
-                    Point3="51.2131876104104,51.3764715443842" />
-                  <mssgle:LineSegment
-                    End="51.2131876104104,87.2529430887684" />
+                    End="0,114.782355239564" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15052,30 +15144,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package.PrecedenceConstraints[Constraint 2]"
-          TopLeft="274.270332474649,260.541179541155">
+          TopLeft="228.724178179823,259.776473648077">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="31.0505506332861,79.169231807053"
+              EndConnector="0,87.5809966309072"
               Start="0,0"
-              End="31.0505506332861,71.669231807053">
+              End="0,80.0809966309072">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,35.5846159035265" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,35.5846159035265"
-                    Point2="0,39.5846159035265"
-                    Point3="4,39.5846159035265" />
-                  <mssgle:LineSegment
-                    End="27.0505506332861,39.5846159035265" />
-                  <mssgle:CubicBezierSegment
-                    Point1="27.0505506332861,39.5846159035265"
-                    Point2="31.0505506332861,39.5846159035265"
-                    Point3="31.0505506332861,43.5846159035265" />
-                  <mssgle:LineSegment
-                    End="31.0505506332861,71.669231807053" />
+                    End="0,80.0809966309072" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -15091,47 +15171,49 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
     design-time-name="Package.EventHandlers[OnError]">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="208.8,41.6"
           Id="Package.EventHandlers[OnError]\Execute SQL Task_ErrorLog"
-          TopLeft="105,45" />
+          TopLeft="128.571428972848,45" />
         <NodeLayout
           Size="209.6,41.6"
           Id="Package.EventHandlers[OnError]\ST_Error_Email_Notification"
-          TopLeft="217.142860840778,197.294120414034" />
+          TopLeft="141.428573837086,197.294120414034" />
         <EdgeLayout
           Id="Package.EventHandlers[OnError].PrecedenceConstraints[Constraint]"
-          TopLeft="209.4,86.6">
+          TopLeft="232.971428972848,86.6">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="112.542860840778,110.694120414034"
+              EndConnector="13.257144864238,110.694120414034"
               Start="0,0"
-              End="112.542860840778,103.194120414034">
+              End="13.257144864238,103.194120414034">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,51.3470602070172" />
+                    End="0,51.347060207017" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,51.3470602070172"
-                    Point2="0,55.3470602070172"
-                    Point3="4,55.3470602070172" />
+                    Point1="0,51.347060207017"
+                    Point2="0,55.347060207017"
+                    Point3="4,55.347060207017" />
                   <mssgle:LineSegment
-                    End="108.542860840778,55.3470602070172" />
+                    End="9.25714486423803,55.347060207017" />
                   <mssgle:CubicBezierSegment
-                    Point1="108.542860840778,55.3470602070172"
-                    Point2="112.542860840778,55.3470602070172"
-                    Point3="112.542860840778,59.3470602070172" />
+                    Point1="9.25714486423803,55.347060207017"
+                    Point2="13.257144864238,55.347060207017"
+                    Point3="13.257144864238,59.347060207017" />
                   <mssgle:LineSegment
-                    End="112.542860840778,103.194120414034" />
+                    End="13.257144864238,103.194120414034" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -15145,11 +15227,11 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         <NodeLayout
           Size="166.4,41.6"
           Id="Package\DFT_QuickenLoan_SalesForce\Fuzzy Lookup_MIC"
-          TopLeft="267.765083611741,134.750328608669" />
+          TopLeft="262.765083526592,149.279740577144" />
         <NodeLayout
           Size="209.6,41.6"
           Id="Package\DFT_QuickenLoan_SalesForce\Lookup_MarketSourceName"
-          TopLeft="541.17778668063,114.358171459932" />
+          TopLeft="547.606358218679,146.475818969193" />
         <NodeLayout
           Size="228,41.6"
           Id="Package\DFT_QuickenLoan_SalesForce\Salesforce Source_QuickenLoan"
@@ -15157,208 +15239,190 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         <NodeLayout
           Size="250.4,41.6"
           Id="Package\DFT_QuickenLoan_SalesForce\Derived Column_DT_WSTR_DT_STR"
-          TopLeft="342.142862969516,27.5294121507955" />
+          TopLeft="534.285723384547,22.1764708992519" />
         <NodeLayout
           Size="129.6,41.6"
           Id="Package\DFT_QuickenLoan_SalesForce\Row Count"
-          TopLeft="57.6920634663833,242.115033225507" />
+          TopLeft="33.4063487670857,263.526798231681" />
         <NodeLayout
           Size="226.4,41.6"
           Id="Package\DFT_QuickenLoan_SalesForce\OLE DB Destination_SalesForce"
-          TopLeft="313.210683544625,235.444447746464" />
+          TopLeft="309.639254912375,259.915036324949" />
         <NodeLayout
           Size="162.4,41.6"
           Id="Package\DFT_QuickenLoan_SalesForce\Derived Column 1"
-          TopLeft="49.8412706900622,126.136304966679" />
-        <EdgeLayout
-          Id="Package\DFT_QuickenLoan_SalesForce.Paths[Salesforce Source Output]"
-          TopLeft="252.285714699297,47.182353311179">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="89.8571482702191,0"
-              Start="0,0"
-              End="82.3571482702191,0">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="82.3571482702191,0" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="15.5555558204657,148.312775865931" />
         <EdgeLayout
           Id="Package\DFT_QuickenLoan_SalesForce.Paths[Row Count Output 1]"
-          TopLeft="187.292063466383,259.579740485985">
+          TopLeft="163.006348767086,282.520917278315">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="125.918620078241,0"
+              EndConnector="146.63290614529,0"
               Start="0,0"
-              End="118.418620078241,0">
+              End="139.13290614529,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="118.418620078241,0" />
+                    End="139.13290614529,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_QuickenLoan_SalesForce.Paths[Lookup Match Output]"
-          TopLeft="541.17778668063,135.158171459932">
+          TopLeft="547.606358218679,168.677779773169">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-107.012703068889,20.3921571487366"
+              EndConnector="-118.441274692088,0"
               Start="0,0"
-              End="-99.5127030688888,20.3921571487366">
+              End="-110.941274692088,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-49.5063515344444,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-49.5063515344444,0"
-                    Point2="-53.5063515344444,0"
-                    Point3="-53.5063515344444,4" />
-                  <mssgle:LineSegment
-                    End="-53.5063515344444,16.3921571487366" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-53.5063515344444,16.3921571487366"
-                    Point2="-53.5063515344444,20.3921571487366"
-                    Point3="-57.5063515344444,20.3921571487366" />
-                  <mssgle:LineSegment
-                    End="-99.5127030688888,20.3921571487366" />
+                    End="-110.941274692088,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="-101.697738253194,-17.609375,96.3827734375,11.609375"
+              BoundingBox="-103.662024064794,5,96.3827734375,11.609375"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_QuickenLoan_SalesForce.Paths[Fuzzy Lookup Output]"
-          TopLeft="267.765083611741,155.550328608669">
+          TopLeft="262.765083526592,169.596258221538">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-55.5238129216787,-8.61402364199034"
+              EndConnector="-84.8095277061258,0"
               Start="0,0"
-              End="-48.0238129216787,-8.61402364199034">
+              End="-77.3095277061258,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="-23.7619064608394,0" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-23.7619064608394,0"
-                    Point2="-27.7619064608394,0"
-                    Point3="-27.7619064608394,-4" />
-                  <mssgle:LineSegment
-                    End="-27.7619064608394,-4.61402364199034" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-27.7619064608394,-4.61402364199034"
-                    Point2="-27.7619064608394,-8.61402364199034"
-                    Point3="-31.7619064608394,-8.61402364199034" />
-                  <mssgle:LineSegment
-                    End="-48.0238129216787,-8.61402364199034" />
+                    End="-77.3095277061258,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_QuickenLoan_SalesForce.Paths[Derived Column Output1]"
-          TopLeft="131.041270690062,167.736304966679">
+          TopLeft="97.4809522937757,189.912775865931">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="-8.54920722367891,74.3787282588277"
+              EndConnector="0,73.6140223657505"
               Start="0,0"
-              End="-8.54920722367891,66.8787282588277">
+              End="0,66.1140223657505">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,33.1893641294138" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,33.1893641294138"
-                    Point2="0,37.1893641294138"
-                    Point3="-4,37.1893641294138" />
-                  <mssgle:LineSegment
-                    End="-4.54920722367891,37.1893641294138" />
-                  <mssgle:CubicBezierSegment
-                    Point1="-4.54920722367891,37.1893641294138"
-                    Point2="-8.54920722367891,37.1893641294138"
-                    Point3="-8.54920722367891,41.1893641294138" />
-                  <mssgle:LineSegment
-                    End="-8.54920722367891,66.8787282588277" />
+                    End="0,66.1140223657505" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
-              RelativePosition="Any" />
+            <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\DFT_QuickenLoan_SalesForce.Paths[Derived Column Output]"
-          TopLeft="467.342862969516,69.1294121507955">
+          TopLeft="655.946040801613,63.7764708992519">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="178.634923711113,45.2287593091369"
+              EndConnector="0,82.6993480699411"
               Start="0,0"
-              End="178.634923711113,37.7287593091369">
+              End="0,75.1993480699411">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,18.6143796545685" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,18.6143796545685"
-                    Point2="0,22.6143796545685"
-                    Point3="4,22.6143796545685" />
+                    End="0,75.1993480699411" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="154.4,41.6"
+          Id="Package\DFT_QuickenLoan_SalesForce\Conditional Split"
+          TopLeft="296.42857647672,32.8823534023391" />
+        <EdgeLayout
+          Id="Package\DFT_QuickenLoan_SalesForce.Paths[Salesforce Source Output]"
+          TopLeft="252.285714699297,49.8588239369508">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="44.1428617774227,0"
+              Start="0,0"
+              End="36.6428617774227,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="174.634923711113,22.6143796545685" />
-                  <mssgle:CubicBezierSegment
-                    Point1="174.634923711113,22.6143796545685"
-                    Point2="178.634923711113,22.6143796545685"
-                    Point3="178.634923711113,26.6143796545685" />
+                    End="36.6428617774227,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT_QuickenLoan_SalesForce.Paths[Keep]"
+          TopLeft="450.82857647672,53.6823534023391">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="83.4571469078268,-10.7058825030872"
+              Start="0,0"
+              End="75.9571469078268,-10.7058825030872">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
                   <mssgle:LineSegment
-                    End="178.634923711113,37.7287593091369" />
+                    End="37.7285734539134,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="37.7285734539134,0"
+                    Point2="41.7285734539134,0"
+                    Point3="41.7285734539134,-4" />
+                  <mssgle:LineSegment
+                    End="41.7285734539134,-6.70588250308717" />
+                  <mssgle:CubicBezierSegment
+                    Point1="41.7285734539134,-6.70588250308717"
+                    Point2="41.7285734539134,-10.7058825030872"
+                    Point3="45.7285734539134,-10.7058825030872" />
+                  <mssgle:LineSegment
+                    End="75.9571469078268,-10.7058825030872" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
             <mssgm:EdgeLabel
-              BoundingBox="0,0,0,0"
+              BoundingBox="30.2775968914134,1,22.901953125,11.2822265625"
               RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>

@@ -2,38 +2,38 @@
 <BuildLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ProjectInfo>
     <Name>QL_Bitania_Seyum_SSIS_Packages</Name>
-    <LastWriteTime>2020-09-24T03:36:05.6063977Z</LastWriteTime>
+    <LastWriteTime>2020-10-04T22:28:10.1509314Z</LastWriteTime>
     <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
   </ProjectInfo>
   <LastBuildInfos>
     <ProjectBuildItemInfo>
       <Name>Pkg_Bitania_Seyum_LendingQB.dtsx</Name>
-      <LastWriteTime>2020-09-24T22:21:01.1267877Z</LastWriteTime>
+      <LastWriteTime>2020-10-04T20:54:53.6788382Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Bitania_Seyum_QuickenLoan.dtsx</Name>
-      <LastWriteTime>2020-09-24T22:26:46.1563619Z</LastWriteTime>
+      <LastWriteTime>2020-10-02T18:07:53.8423458Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Bitania_Seyum_UberWriter.dtsx</Name>
-      <LastWriteTime>2020-09-24T21:19:33.7329105Z</LastWriteTime>
+      <LastWriteTime>2020-10-02T01:35:47.1969951Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Bitania_Seyum_LendingPad.dtsx</Name>
-      <LastWriteTime>2020-09-24T22:18:03.63278Z</LastWriteTime>
+      <LastWriteTime>2020-10-02T22:11:16.1979325Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Bitania_Seyum_SimpleNexus.dtsx</Name>
-      <LastWriteTime>2020-09-24T22:37:27.0890922Z</LastWriteTime>
+      <LastWriteTime>2020-10-02T22:11:16.0847237Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
     <ProjectBuildItemInfo>
       <Name>Pkg_Bitania_Seyum_Quicken_Loans_Master.dtsx</Name>
-      <LastWriteTime>2020-09-24T00:49:09.624846Z</LastWriteTime>
+      <LastWriteTime>2020-10-04T22:28:10.0960768Z</LastWriteTime>
       <LastKnownProtectionLevel>EncryptSensitiveWithUserKey</LastKnownProtectionLevel>
     </ProjectBuildItemInfo>
   </LastBuildInfos>

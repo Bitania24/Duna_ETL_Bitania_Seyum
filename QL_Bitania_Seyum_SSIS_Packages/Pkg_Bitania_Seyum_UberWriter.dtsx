@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_Bitania_Seyum_UberWriter"
   DTS:PackageType="5"
-  DTS:VersionBuild="46"
-  DTS:VersionGUID="{C59D1872-6265-4365-9FE0-07898F49AF4C}">
+  DTS:VersionBuild="49"
+  DTS:VersionGUID="{5657E797-4A0F-4C01-8E29-289E73259380}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:Variables>
@@ -93,7 +93,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="varRunTime">
       <DTS:VariableValue
-        DTS:DataType="7">9/24/2020 6:43:35 PM</DTS:VariableValue>
+        DTS:DataType="7">10/1/2020 6:29:27 PM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -142,7 +142,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="varTimeStamp">
       <DTS:VariableValue
-        DTS:DataType="7">9/24/2020 6:43:35 PM</DTS:VariableValue>
+        DTS:DataType="7">10/1/2020 6:29:27 PM</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -210,8 +210,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task_UberWriter\ADO NET Source_UberWriter.Connections[IDbConnection]"
-                  connectionManagerID="{0F65369C-88BA-458E-A787-5FC44E5DB009}:invalid"
-                  connectionManagerRefId="{0F65369C-88BA-458E-A787-5FC44E5DB009}:invalid"
+                  connectionManagerID="{D9E54D7E-1DA2-44B9-B810-4D7CE76959EE}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[Duna.database.windows.net.UberWriter.UberWriter]"
                   description="Managed connection manager"
                   name="IDbConnection" />
               </connections>
@@ -13716,7 +13716,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
     design-time-name="Package.EventHandlers[OnError]">
     <LayoutInfo>
       <GraphLayout
-        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
         <NodeLayout
           Size="151.2,41.6"
           Id="Package.EventHandlers[OnError]\EST_Error_LOG"
@@ -13756,7 +13756,9 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
             </mssgle:Curve>
           </EdgeLayout.Curve>
           <EdgeLayout.Labels>
-            <EdgeLabelCollection />
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
           </EdgeLayout.Labels>
         </EdgeLayout>
       </GraphLayout>
@@ -13778,7 +13780,7 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         <NodeLayout
           Size="129.6,41.6"
           Id="Package\Data Flow Task_UberWriter\Row Count"
-          TopLeft="65.7142868333933,268.411768470256" />
+          TopLeft="40.0000006811959,266.882356684101" />
         <NodeLayout
           Size="218.4,41.6"
           Id="Package\Data Flow Task_UberWriter\Conditional Split_RemoveTest"
@@ -13801,18 +13803,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
           TopLeft="20.0000003405981,48.9411771569698" />
         <EdgeLayout
           Id="Package\Data Flow Task_UberWriter.Paths[Row Count Output 1]"
-          TopLeft="195.314286833393,285.770591951407">
+          TopLeft="169.600000681196,285.005886058329">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="77.5428606704789,0"
+              EndConnector="103.257146822676,0"
               Start="0,0"
-              End="70.0428606704789,0">
+              End="95.7571468226761,0">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="70.0428606704789,0" />
+                    End="95.7571468226761,0" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -13893,30 +13895,18 @@ AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</BinaryItem>
         </EdgeLayout>
         <EdgeLayout
           Id="Package\Data Flow Task_UberWriter.Paths[Derived Column Output1]"
-          TopLeft="112.657143331547,201.423531653229">
+          TopLeft="108.728572006372,201.423531653229">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="17.8571435018462,66.9882368170267"
+              EndConnector="0,65.4588250308717"
               Start="0,0"
-              End="17.8571435018462,59.4882368170267">
+              End="0,57.9588250308717">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,29.4941184085133" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,29.4941184085133"
-                    Point2="0,33.4941184085133"
-                    Point3="4,33.4941184085133" />
-                  <mssgle:LineSegment
-                    End="13.8571435018462,33.4941184085133" />
-                  <mssgle:CubicBezierSegment
-                    Point1="13.8571435018462,33.4941184085133"
-                    Point2="17.8571435018462,33.4941184085133"
-                    Point3="17.8571435018462,37.4941184085133" />
-                  <mssgle:LineSegment
-                    End="17.8571435018462,59.4882368170267" />
+                    End="0,57.9588250308717" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
