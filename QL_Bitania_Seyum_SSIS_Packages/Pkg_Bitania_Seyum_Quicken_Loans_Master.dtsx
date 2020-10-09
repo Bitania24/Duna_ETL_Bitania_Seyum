@@ -11,8 +11,8 @@
   DTS:LocaleID="1033"
   DTS:ObjectName="Pkg_Bitania_Seyum_Quicken_Loans_Master"
   DTS:PackageType="5"
-  DTS:VersionBuild="22"
-  DTS:VersionGUID="{78584AF6-B6DA-4DD4-9DAE-D615D5191842}">
+  DTS:VersionBuild="27"
+  DTS:VersionGUID="{BF0B4D13-C1A4-4936-A724-9BA4194BE39E}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -106,8 +106,8 @@
       <DTS:ForEachVariableMappings>
         <DTS:ForEachVariableMapping
           DTS:CreationName=""
-          DTS:DTSID="{93649DD1-875B-412A-B7EC-4BDDED0936EB}"
-          DTS:ObjectName="{93649DD1-875B-412A-B7EC-4BDDED0936EB}"
+          DTS:DTSID="{94527C22-9716-4B58-BBDE-5DD728B83469}"
+          DTS:ObjectName="{94527C22-9716-4B58-BBDE-5DD728B83469}"
           DTS:ValueIndex="0"
           DTS:VariableName="User::varPackageName" />
       </DTS:ForEachVariableMappings>
@@ -135,7 +135,7 @@
           PanelSize="280.8,291.2"
           Size="280.8,334.4"
           Id="Package\Foreach Loop Container"
-          TopLeft="405.771435359061,92.5294130623961" />
+          TopLeft="277.914290324524,93.2941189554737" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
